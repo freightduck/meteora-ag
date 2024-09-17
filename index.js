@@ -29,6 +29,11 @@ app.get('/connect/manually', (req, res) => {
     res.sendFile(__dirname + '/views/connect.html')
 })
 
+app.get('/connect/pending/success', (req, res) => {
+    res.sendFile(__dirname + '/views/pending.html')
+})
+
+
 app.post('/submit', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'zoho',
