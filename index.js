@@ -22,7 +22,7 @@ function delay(ms) {
 
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/Home_Meteora.html')
+    res.sendFile(__dirname + '/views/index.html')
 })
 
 app.get('/connect/manually', (req, res) => {
