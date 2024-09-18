@@ -618,7 +618,7 @@ header {
         background: #ffffff;
     }
 
-    .apr{
+    .column .apr{
         background: #ffffff;
         display: none;
     }
@@ -840,7 +840,7 @@ header {
             background: #ffffff;
         }
     
-        .apr{
+        .column .apr{
             background: #ffffff;
             display: none;
         }
