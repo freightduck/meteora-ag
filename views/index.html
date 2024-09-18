@@ -19,7 +19,7 @@
         <nav class="navbar">
             <div class="brand">
                 <img src="https://app.meteora.ag/icons/logo.svg" alt="Meteora Logo" class="logo"> <!-- Logo image -->
-                <h3>Meteora</h3>
+                <p id="brand-name">Meteora</p>
             </div>
             <ul>
                 <li><a id="bold-li" onclick="showAlert();">Pools</a></li>
@@ -29,11 +29,11 @@
             </ul>
 
             <div class="action-btn">
-                <div class="priority">
-                    <span style="color: #ffffff;">Priority: <span class="mixed" style="color: #ff9d00;">Mixed</span>
+                <!-- <div class="priority">
+                    <span style="color: #ffffff;"><p class="priority-text">Priority:</p> <span class="mixed" style="color: #ff9d00;">Mixed</span>
                     <span class="icon" style="padding-left: 5px;"><i class="fa-solid fa-chevron-down icon"></i>
                     </span> <span class="icon" style="padding-left: 10px;"><i class="fa-solid fa-gear icon"></i></span></span>
-                </div>
+                </div> -->
                 <div class="connect-wallet">
                     <button onclick="showAlert();" >Connect Wallet</button>
                 </div>
@@ -48,9 +48,9 @@
             <div class="pool-summary-links">
                 <ul>
                     <li><a onclick="showAlert();" class="active">Dynamic Pools</a></li>
-                    <li><a onclick="showAlert()">Pool with Farms</a></li>
-                    <li><a onclick="showAlert()">LST Pools</a></li>
-                    <li><a onclick="showAlert()">Multi-token Pools</a></li>
+                    <li><a onclick="showAlert()" class="link2">Pool with Farms</a></li>
+                    <li><a onclick="showAlert()" class="link2">LST Pools</a></li>
+                    <li><a onclick="showAlert()" class="link2">Multi-token Pools</a></li>
                 </ul>
             </div>
             
@@ -82,9 +82,9 @@
             </div>
             <div class="table-container">
                 <div class="table-header">
-                    <div class="column column-header ">Pool</div>
+                    <div class="column column-header">Pool</div>
                     <div class="column column-header header0">Type</div>
-                    <div class="column column-header ">TVL/<span class="vol">24H Vol</span></div>
+                    <div class="column column-header tvl">TVL/<span class="vol">24H Vol</span></div>
                     <div class="column column-header header1">24H Vol</div>
                     <div class="column column-header">365d Yield / TVL</div>
                     <div class="column column-header header3">LM APR</div>
