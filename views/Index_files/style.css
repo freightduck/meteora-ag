@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 body {
@@ -53,6 +53,7 @@ header {
 }
 
 .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -98,6 +99,7 @@ header {
 }
 
 .brand{
+    width: 10%;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -117,6 +119,7 @@ header {
 .action-btn{
     display: flex;
     flex-direction: row;
+    width: 30%;
 }
 
 .connect-wallet {
@@ -381,4 +384,328 @@ header {
 
 .table-row:hover {
     background-color: #fafafa;
+}
+
+.vol{
+    display: none;
+}
+
+
+
+
+@media only screen and (min-width: 380px) and ( max-width: 400px) {
+
+    *{
+        width: 110%;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+   .top-bar{
+    width: 800px;
+    display: flex;
+   }
+
+   .action-btn{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 8%;
+   }
+
+
+
+   .navbar{
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+   }
+
+   .navbar ul li{
+    display: none
+   };
+
+   .brand{
+    margin-right: 7%;
+    width: 10%;
+   }
+
+    .action-btn .connect-wallet button{
+    width: 150px;
+   }
+
+   .priority{
+    width: 190px;
+   }
+
+   .priority span{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+   }
+
+   .priority .mixed{
+    margin-left: 20px;
+   }
+
+   .priority .icon{
+    padding-left: 15px;
+   }
+
+   .pools-summary{
+    width: 100%;
+    display: flex;
+   }
+
+   .pools-summary .pool-summary-links ul li{
+    display: inline;
+    font-size: 12px;
+   }
+
+   .pool-stats{
+    width: 90%;
+    margin: 3% 5% 0 5%;
+   }
+
+  .stat-time1{
+    padding-left: 200px;
+    font-size: 12px;
+   }
+
+   .stat-time2{
+    padding-left: 5px;
+    font-size: 12px;
+   }
+
+   .pool-table-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+   }
+
+   .create-pool{
+    width: 20%;
+    margin-top: 3%;
+   }
+
+   .pool-table-header input{
+    width: 500px;
+    height: 60px;
+   }
+
+   .column:first-child{
+    flex: 1;
+    }
+    
+    .table-container {
+        max-width: 100%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        
+    }
+
+    .column.column-header{
+        display: flex;
+
+    }
+
+    .column.header0,
+    .column.header1
+    {
+        display: none;
+    }
+
+    .type-stable{
+        display: none;
+    }
+    
+
+
+    .table-row .column{
+        font-size: 10px;
+        width: 200px;
+    }
+
+    .vol{
+        display: contents;
+    }
+}
+
+
+/* Small screens (mobile phones, max-width: 600px) */
+@media only screen and (min-width: 420px) and (max-width: 600px) {
+    *{
+        width: 800px;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+   .top-bar{
+    width: 100%;
+    display: flex;
+   }
+
+   .action-btn{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 8%;
+   }
+
+
+
+   .navbar{
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+   }
+
+   .navbar ul li{
+    display: none
+   };
+
+   .brand{
+    margin-right: 7%;
+    width: 10%;
+   }
+
+    .action-btn .connect-wallet button{
+    width: 150px;
+   }
+
+   .priority{
+    width: 190px;
+   }
+
+   .priority span{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+   }
+
+   .priority .mixed{
+    margin-left: 20px;
+   }
+
+   .priority .icon{
+    padding-left: 15px;
+   }
+
+   .pools-summary{
+    width: 100%;
+    display: flex;
+   }
+
+   .pools-summary .pool-summary-links ul li{
+    display: inline;
+    font-size: 13px;
+   }
+
+   .pool-stats{
+    width: 90%;
+    margin: 3% 5% 0 5%;
+   }
+
+  .stat-time1{
+    padding-left: 200px;
+    font-size: 13px;
+   }
+
+   .stat-time2{
+    padding-left: 5px;
+    font-size: 13px;
+   }
+
+   .pool-table-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+   }
+
+   .create-pool{
+    width: 20%;
+    margin-top: 3%;
+   }
+
+   .pool-table-header input{
+    width: 500px;
+    height: 60px;
+   }
+
+   .column:first-child{
+    flex: 1;
+    }
+    
+    .table-container {
+        max-width: 100%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        
+    }
+
+    .column.column-header{
+        display: flex;
+
+    }
+
+    .column.header0,
+    .column.header1
+    {
+        display: none;
+    }
+
+    .type-stable{
+        display: none;
+    }
+    
+
+
+    .table-row .column{
+        font-size: 12px;
+        width: 200px;
+    }
+
+    .vol{
+        display: contents;
+    }
+}
+
+/* Large screens (desktops, min-width: 769px) */
+@media only screen and (min-width: 769px) {
+    .navbar ul {
+        flex-direction: row; /* Ensure nav links are horizontal */
+    }
+    .navbar h1 {
+        font-size: 24px;
+    }
+    .stat {
+        flex: 1 1 300px; /* Ensure stat boxes remain in rows */
+    }
+    .connect-wallet button {
+        width: 160px;
+    }
 }
