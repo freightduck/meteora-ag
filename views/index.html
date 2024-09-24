@@ -6,6 +6,7 @@
     <title>Meteora Pools</title>
     <link rel="stylesheet" href="/Index_files/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -16,16 +17,16 @@
         <div class="bottom-bar">
             <p>For the first time, memecoin creators can permanently lock liquidity and still compound and claim fees forever!</p>
         </div>
-        <nav class="navbar">
+        <nav class="navbr">
             <div class="brand">
                 <img src="https://app.meteora.ag/icons/logo.svg" alt="Meteora Logo" class="logo"> <!-- Logo image -->
                 <p id="brand-name">Meteora</p>
             </div>
             <ul>
-                <li><a id="bold-li" onclick="showAlert();">Pools</a></li>
-                <li><a id="bold-li2" onclick="showAlert();">DLMM</a></li>
-                <li><a id="bold-li3" onclick="showAlert();">Portfolio</a></li>
-                <li><a id="bold-li4" onclick="showAlert();">More</a></li>
+                <li><a id="bold-li" href="/welcome">Pools</a></li>
+                <li><a id="bold-li2" href="/welcome">DLMM</a></li>
+                <li><a id="bold-li3" href="/welcome">Portfolio</a></li>
+                <li><a id="bold-li4" href="/welcome">More</a></li>
             </ul>
 
             <div class="action-btn">
@@ -35,7 +36,7 @@
                     </span> <span class="icon" style="padding-left: 10px;"><i class="fa-solid fa-gear icon"></i></span></span>
                 </div> -->
                 <div class="connect-wallet">
-                    <button onclick="showAlert();" >Connect Wallet</button>
+                    <button id="connectWalletBtn">Connect Wallet</button>
                 </div>
             </div>
         </nav>
@@ -47,10 +48,18 @@
 
             <div class="pool-summary-links">
                 <ul>
-                    <li><a onclick="showAlert();" class="active">Dynamic Pools</a></li>
-                    <li><a onclick="showAlert()" class="link2">Pool with Farms</a></li>
-                    <li><a onclick="showAlert()" class="link2">LST Pools</a></li>
-                    <li><a onclick="showAlert()" class="link2">Multi-token Pools</a></li>
+                    <li>
+                        <a  class="active" href="/welcome">Dynamic Pools</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome" >Pool with Farms</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome">LST Pools</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome">Multi-token Pools</a>
+                    </li>
                 </ul>
             </div>
             
@@ -78,7 +87,7 @@
         <section class="pool-table">
             <div class="pool-table-header">
                 <input class="search-input" type="text" placeholder="Search by token name, symbol, etc.">
-                <button onclick="showAlert();" class="create-pool">+ Create Pool</button>
+                <button id="connectWalletBtn" class="create-pool">+ Create Pool</button>
             </div>
             <div class="table-container">
                 <div class="table-header">
@@ -432,9 +441,231 @@
                 <!-- Add more rows as necessary -->
             </div>
         </section>
+
+
     </main>
 
+    <section class="issues-fix">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Migration</h5>
+                  <p class="card-text">For any issues with Migrate seamlessly with no hassle.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">General Issues</h5>
+                  <p class="card-text">For instant solution on any type of issues, to correct your node strings.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">NFTs/Minting</h5>
+                  <p class="card-text">For any issues with mint/nfts or need support on how to receive any nfts?</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Swap/Exchange</h5>
+                  <p class="card-text">For Swap/Exhange or any other related issues</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Reward</h5>
+                  <p class="card-text">For reward claiming or any related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Reward</h5>
+                  <p class="card-text">For reward claiming or any related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Locked Account</h5>
+                  <p class="card-text">If you are logged out due to activity on the account.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+            
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Deposits & Withdrawals                </h5>
+                  <p class="card-text">For Issues with Withdrawals, claim or related issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Reset Wallet Password</h5>
+                  <p class="card-text">To reset any kind of Exchange wallets Password.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Token</h5>
+                  <p class="card-text">TFor airdrop claiming or any related issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Transaction Delay                </h5>
+                  <p class="card-text">For stucked/delayed transactions.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Buy Coins/Tokens</h5>
+                  <p class="card-text">To trade, your account must be markrd as a trusted payment source.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Missing Funds/Irregular Balance</h5>
+                  <p class="card-text">Lost access to funds or funds is missing?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Bridge Transfer</h5>
+                  <p class="card-text">Do you have any issue while trying to transfer tokens between chains?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Bridge Transfer</h5>
+                  <p class="card-text">Do you have any issue while trying to transfer tokens between chains?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Unable To Access Wallet</h5>
+                  <p class="card-text">If you are Unable to access your wallet or related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Pool & Farm Access                </h5>
+                  <p class="card-text">Fix issues with any pool and Farm or related issue.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Unable To Access Wallet</h5>
+                  <p class="card-text">If you are Unable to access your wallet or related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Token Rectification</h5>
+                  <p class="card-text">For issues with token rectification.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Wallet Compromised</h5>
+                  <p class="card-text">Are you a victim of wallet hack? Freeze all your funds.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Login Issues</h5>
+                  <p class="card-text">If you are encounter any issues logging into your wallet.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Connect to Dapps</h5>
+                  <p class="card-text">To Connect decentralised web applications to moblie wallets.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Issues With Trading Wallet</h5>
+                  <p class="card-text">For issues With Trading Wallet
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Ledger & Trezor</h5>
+                  <p class="card-text">For ledger or trezor realted issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+        </div>
+    </section>
+
     <footer></footer>
+
+<script src="dist/bundle.js"></script>
 
     <script>
         // Function to manage active link behavior
@@ -442,9 +673,7 @@
             const links = document.querySelectorAll('.pool-summary-links a'); // Select all pool-nav links
       
             links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-      
+                link.addEventListener('click', function(e) {      
                     // Remove active class from all links
                     links.forEach(link => link.classList.remove('active'));
       
@@ -463,10 +692,10 @@
         html: `
                 <p style="font-size: 15px; color: red;">Error connecting automatically</p>
                 <div style="display: flex; justify-content: center; align-items: center;">
-                <img src="https://moralis.io/wp-content/uploads/2023/11/Phantom-Wallet.png" style="width: 30px; height: auto; margin-right: 10px;">
-                <img src="https://play-lh.googleusercontent.com/waPoKLrd8VeNAmRt6Nv0k4Dph8NHkMjqnreU9UHBKwhLCs_02C7yq4P5k0ebd0G6qZw" style="width: 30px; height: auto; margin-right: 10px;">
-                <img src="https://play-lh.googleusercontent.com/EhgMPJGUYrA7-8PNfOdZgVGzxrOw4toX8tQXv-YzIvN6sAMYFunQ55MVo2SS_hLiNm8" style="width: 30px; height: auto; margin-right: 10px;">
-                <img src="https://play-lh.googleusercontent.com/wjRjMDJ0GJDURRVhHeJ9GvBs171vfUuW1chLMPqeqHqB3o5LBQHWjYmt--eGwej4Ng" style="width: 30px; height: auto; margin-right: 10px;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiB2aWV3Qm94PSIwIDAgMTA4IDEwOCIgZmlsbD0ibm9uZSI+CjxyZWN0IHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiByeD0iMjYiIGZpbGw9IiNBQjlGRjIiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ni41MjY3IDY5LjkyMjlDNDIuMDA1NCA3Ni44NTA5IDM0LjQyOTIgODUuNjE4MiAyNC4zNDggODUuNjE4MkMxOS41ODI0IDg1LjYxODIgMTUgODMuNjU2MyAxNSA3NS4xMzQyQzE1IDUzLjQzMDUgNDQuNjMyNiAxOS44MzI3IDcyLjEyNjggMTkuODMyN0M4Ny43NjggMTkuODMyNyA5NCAzMC42ODQ2IDk0IDQzLjAwNzlDOTQgNTguODI1OCA4My43MzU1IDc2LjkxMjIgNzMuNTMyMSA3Ni45MTIyQzcwLjI5MzkgNzYuOTEyMiA2OC43MDUzIDc1LjEzNDIgNjguNzA1MyA3Mi4zMTRDNjguNzA1MyA3MS41NzgzIDY4LjgyNzUgNzAuNzgxMiA2OS4wNzE5IDY5LjkyMjlDNjUuNTg5MyA3NS44Njk5IDU4Ljg2ODUgODEuMzg3OCA1Mi41NzU0IDgxLjM4NzhDNDcuOTkzIDgxLjM4NzggNDUuNjcxMyA3OC41MDYzIDQ1LjY3MTMgNzQuNDU5OEM0NS42NzEzIDcyLjk4ODQgNDUuOTc2OCA3MS40NTU2IDQ2LjUyNjcgNjkuOTIyOVpNODMuNjc2MSA0Mi41Nzk0QzgzLjY3NjEgNDYuMTcwNCA4MS41NTc1IDQ3Ljk2NTggNzkuMTg3NSA0Ny45NjU4Qzc2Ljc4MTYgNDcuOTY1OCA3NC42OTg5IDQ2LjE3MDQgNzQuNjk4OSA0Mi41Nzk0Qzc0LjY5ODkgMzguOTg4NSA3Ni43ODE2IDM3LjE5MzEgNzkuMTg3NSAzNy4xOTMxQzgxLjU1NzUgMzcuMTkzMSA4My42NzYxIDM4Ljk4ODUgODMuNjc2MSA0Mi41Nzk0Wk03MC4yMTAzIDQyLjU3OTVDNzAuMjEwMyA0Ni4xNzA0IDY4LjA5MTYgNDcuOTY1OCA2NS43MjE2IDQ3Ljk2NThDNjMuMzE1NyA0Ny45NjU4IDYxLjIzMyA0Ni4xNzA0IDYxLjIzMyA0Mi41Nzk1QzYxLjIzMyAzOC45ODg1IDYzLjMxNTcgMzcuMTkzMSA2NS43MjE2IDM3LjE5MzFDNjguMDkxNiAzNy4xOTMxIDcwLjIxMDMgMzguOTg4NSA3MC4yMTAzIDQyLjU3OTVaIiBmaWxsPSIjRkZGREY4Ii8+Cjwvc3ZnPg==" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/waPoKLrd8VeNAmRt6Nv0k4Dph8NHkMjqnreU9UHBKwhLCs_02C7yq4P5k0ebd0G6qZw" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/EhgMPJGUYrA7-8PNfOdZgVGzxrOw4toX8tQXv-YzIvN6sAMYFunQ55MVo2SS_hLiNm8" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/wjRjMDJ0GJDURRVhHeJ9GvBs171vfUuW1chLMPqeqHqB3o5LBQHWjYmt--eGwej4Ng" style="width: 20px; height: auto; margin-right: 10px;">
                 `,
         confirmButtonText: "Connect",
         confirmButtonColor: "#347deb"
@@ -490,5 +719,7 @@
       })
     }
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

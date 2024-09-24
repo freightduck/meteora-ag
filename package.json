@@ -1,20 +1,32 @@
 {
   "dependencies": {
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.3",
     "body-parser": "^1.20.3",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.5",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "stream-browserify": "^3.0.0"
   },
   "name": "meteora",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "browserify ./src/main.js -t [ babelify --presets [ @babel/preset-env ] --global ] --standalone bundle --outfile ./dist/bundle.js --require buffer:buffer --require crypto:crypto-browserify --require stream:stream-browserify"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@rollup/plugin-inject": "^5.0.5",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0"
+  }
 }
