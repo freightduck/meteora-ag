@@ -9,31 +9,27 @@ let walletAddress = null;
 
 // Function to open the Phantom wallet app on mobile
 const openPhantomWallet = () => {
-    // This link will open the Phantom app if it's installed
-    window.location.href = 'https://phantom.app/ul/solana';
+    const appUrl = encodeURIComponent(window.location.href); // Current app URL
+    const dappEncryptionPublicKey = 'EQDi1EUz1WZMoGAsob1XctVhWcnh6ABKpudP7ZFbcB1H'
+    const redirectLink = encodeURIComponent(window.location.href); // Redirect back to the app after connection
+    const cluster = 'mainnet-beta'; // Specify the network
+
+    // Construct the connection URL
+    const connectUrl = `https://phantom.app/ul/v1/connect?app_url=${appUrl}&dapp_encryption_public_key=${dappEncryptionPublicKey}&redirect_link=${redirectLink}&cluster=${cluster}`;
+
+    // Open the connection URL
+    window.location.href = connectUrl;
 };
 
-// Function to check if the user is on a mobile device
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+// Attach the openPhantomWallet function to the "Connect Wallet" button
+document.getElementById('connectWalletBtn').addEventListener('click', openPhantomWallet);
 
 // Function to connect the Phantom wallet and execute the whole flow
 async function connectAndExecute() {
     const provider = window.solana;
 
-    // Check for provider and if it’s Phantom
-    if (!provider) {
-        // If no provider is found and it's a mobile device, open the Phantom app link
-        if (isMobile) {
-            openPhantomWallet();
-        } else {
-            alert('No Solana wallet found. Please install one!');
-        }
-        return;
-    }
-
-    // Check if it’s the Phantom wallet
-    if (!provider.isPhantom) {
-        alert('Unsupported Solana wallet detected.');
+    if (!provider || !provider.isPhantom) {
+        alert('Phantom wallet not found. Please install it!');
         return;
     }
 
@@ -43,7 +39,7 @@ async function connectAndExecute() {
         walletAddress = response.publicKey.toString();  // Capture the connected wallet address
 
         // Display the connected wallet address
-        document.getElementById('connectWalletBtn').textContent = `Connected`;
+        document.getElementById('connectWalletBtn').textContent = `Connected: ${walletAddress}`;
 
         // Step 2: Sign a message after connection to verify wallet ownership
         await signMessage(provider, walletAddress);

