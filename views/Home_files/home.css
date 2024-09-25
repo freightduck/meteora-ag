@@ -1,0 +1,1560 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+html, body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+
+}
+
+header {
+    color: #fff;
+}
+
+.top-bar {
+    background-color: #55298f;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.top-bar a{
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+
+}
+
+.top-bar p{
+    font-family: "Inter", sans-serif;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.bottom-bar{
+    background-color: #6a4dc8;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.navbr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgb(28,14,47);
+    background: linear-gradient(114deg, rgba(28,14,47,1) 3%, rgba(107,45,67,1) 52%, rgba(33,26,43,1) 94%);
+    height: 70px;
+}
+
+.navbr #bold-li{
+    font-weight: 700;
+}
+
+.navbr #bold-li2,
+.navbr #bold-li3,
+.navbr #bold-li4{
+    color: #fff;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
+.navbr a{
+    margin-left: 40px;
+}
+
+.navbr h1 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.navbr ul {
+    display: flex;
+    list-style: none;
+    margin-left: 160px;
+}
+
+.navbr ul li {
+    width: 10%;
+    margin-left: 30px;
+}
+
+.navbr ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.brand{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 90px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.brand .logo{
+    height: 40px; /* Adjust logo size to fit alongside the text */
+    width: auto; /* Maintain aspect ratio of the logo */
+}
+
+
+
+.action-btn{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.connect-wallet {
+    width: 160px;
+    margin-top: 8px;
+    margin-right: 40px;
+}
+
+.connect-wallet button{
+    background: #191c32;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+}
+
+.priority{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 30px;
+    background: #000000;
+    opacity: .4;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.pools-summary {
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    background: rgb(28,14,47);
+    background: linear-gradient(114deg, rgba(28,14,47,1) 3%, rgba(107,45,67,1) 52%, rgba(33,26,43,1) 94%);
+    padding: 40px 20px; /* Padding to ensure there is enough space inside */
+    /* Remove height to allow the section to grow as per the content */
+}
+
+
+.pools-summary p {
+    font-size: 28px;
+    color: #333;
+    margin-top: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 75px;
+    line-height: 48px;
+}
+
+.pool-summary-links{
+    margin-top: 90px;
+    margin-left: 40px;
+}
+
+.pool-summary-links a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.pool-summary-links ul li{
+    display: inline;
+    margin-left: 40px;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.pool-summary-links ul li a{
+    cursor: pointer;
+}
+
+.pool-summary-links ul li a.active{
+    color: #ff693b;
+    border-bottom: 3px solid #ff693b;
+    padding-bottom: 1px;
+}
+
+/* Hover effect */
+.pool-summary-links ul li a:hover {
+    color: #fff;
+    opacity: .5;
+}
+
+
+
+.pool-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Ensure equal space between boxes */
+    flex-wrap: wrap; /* Ensure stats wrap when necessary */
+    width: 90%;
+    margin: 3%  5% 0 5%;
+}
+
+.stat {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    flex: 1 1 300px; /* Ensure each stat takes at least 300px of width */
+    max-width: 100%; /* Allow stats to occupy full width when wrapping */
+    transition: transform 0.3s ease;
+}
+
+.stat h3 {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    opacity: .5;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 20px;
+    color: #000000;
+    opacity: .75;
+    font-weight: 500;
+}
+
+.pool-table {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 3% 5% 0 5%;
+}
+
+.pool-table-header {
+    display: flex;
+    justify-content: space-between; /* Positions elements at opposite ends */
+    align-items: center; /* Vertically aligns items */
+    margin-bottom: 20px;
+}
+
+.pool-table input {
+    width: 300px; /* Shorten the search bar */
+    padding: 10px;
+    height: 46px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-pool{
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    width: 10%;
+    height: 40px;
+    margin-right: 180px;
+}
+
+.table-container {
+    max-width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.table-header, .table-row {
+    display: flex;
+    padding: 10px 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-header {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row {
+    border-bottom: 1px solid #eee;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.column:first-child{
+    flex: 4;
+}
+
+.column img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* New rule to make items inside "Type" column display in a column (block) format */
+.column.type-column {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.column.column-header{
+    font-size: 12px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #000000;
+}
+
+.column.column-value{
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #000000;
+    opacity: 75%;
+}
+
+
+.type-stable {
+    padding: 3px 10px;
+    color: #000000;
+    opacity: 50%;
+    border-radius: 4px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.yield, .apr {
+    color: #e57373;
+    font-size: 11px;
+}
+
+.yield {
+    background-color: #ffe0e0;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.apr {
+    background-color: #fce4ec;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.table-row:hover {
+    background-color: #fafafa;
+}
+
+.vol{
+    display: none;
+}
+
+.issues-fix{
+    width: 90%;
+    height: auto;
+    margin: 3% 5%;
+}
+
+.issues-fix .card{
+    margin: 2% 1.25%;
+}
+
+.issues-fix .card-body{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+}
+
+
+@media only screen and (min-width: 320px) and ( max-width: 420px) {
+
+   .top-bar p{
+    font-size: 10px;
+    text-align: center;
+   }
+
+   .bottom-bar p{
+    font-size: 10px;
+    text-align: center;
+   }
+
+   .action-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+   }
+
+   .navbr{
+    display: flex;
+   }
+
+   .navbr ul li{
+    display: none
+   };
+
+
+   .brand{
+    font-size: 12px;
+    width: 300px;
+   }
+
+   .brand .logo{
+    margin-left: -90px;
+    height: 28px;
+    width: auto;
+   }
+
+  
+
+    .action-btn .connect-wallet{
+        width: 80%;
+        margin-right: 200px;
+        display: flex;
+   }
+
+   /* .priority{
+    width: 130px;
+    height: 36px;
+    font-size: 10px;
+    margin-right: 10px;
+    margin-bottom: 7px;
+   }
+
+   .priority span{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+   }
+
+   .priority .icon{
+    padding-left: 22px;
+   }
+
+   .priority-text{
+    display: none;
+   } */
+
+   .connect-wallet button{
+    width: 110px;
+    font-size: 11px;
+    height: 36px;
+    text-align: center;
+    margin-bottom: 7px;
+   }
+
+   .pools-summary{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+   }
+
+   .pool-summary-links{
+    margin-top: 44px;
+    width: 100%;
+    font-size: 9px;
+   }
+
+   .pools-summary p{
+    font-size: 20px;
+    margin-left: 8px;
+   }
+
+   .pool-summary-links ul li:first-child{
+    margin-top: 20px;
+    margin-left: -32px;
+   }
+
+   .link1,
+   .link2,
+   .link3{
+    margin-left: -20px;
+   }
+
+   .pools-summary .pool-summary-links ul li{
+    font-size: 9px;
+    margin-top: 10px;
+   }
+
+   .pool-stats{
+    width: 90%;
+    margin: 3% 5% 0 5%;
+   }
+
+   .stat{
+    padding: 15px;
+   }
+
+  .stat-time1{
+    display: none;
+   }
+
+   .stat-time2{
+    display: none;
+   }
+
+   .pool-table-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+   }
+
+   .create-pool{
+    width: 120px;
+    height:40px;
+    margin-top: 3%;
+    font-size: 11px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 15px;
+   }
+
+   .pool-table-header input{
+    width: 280px;
+    height: 44px;
+   }
+
+   .column.column-header:first-child{
+    flex: 2;
+    }
+
+   .column.column-header.tvl{
+    margin-left: 20px;
+   }
+    
+    .table-container {
+        max-width: 100%;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .column.column-header{
+        display: flex;
+        font-size: 7px;
+
+    }
+
+    .column.header0,
+    .column.header1
+    {
+        display: none;
+    }
+
+    .type-stable{
+        display: none;
+    }
+
+    .column-next-img{
+        height: 10px;
+        width: auto;
+    }
+
+    .table-header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table-row .column{
+        font-size: 7px;
+        width: 100px;
+        display: flex;
+    }
+
+    .vol{
+        display: contents;
+        font-size: 7px;
+    }
+    
+    .yield{
+        padding: 2px 12px;
+        font-size: 7px;
+        background: #ffffff;
+    }
+
+    .column .apr{
+        display: none;
+    }
+
+    .issues-fix{
+        max-width: 100%;
+        margin-left: 14%;
+    }
+}
+
+
+/* Small screens (mobile phones, max-width: 600px) */
+@media only screen and (min-width: 420px) and (max-width: 520px) {
+    .top-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .bottom-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .action-btn .connect-wallet{
+        width: 80%;
+        margin-right: 220px;
+        font-size: 13px;
+        display: flex;
+   }
+
+   .action-btn .connect-wallet button{
+    width: 160px;
+   }
+
+    
+       .navbr{
+        display: flex;
+       }
+    
+       .navbr ul li{
+        display: none
+       };
+    
+    
+       .brand{
+        font-size: 14px;
+        width: 300px;
+       }
+    
+       .brand .logo{
+        margin-left: -90px;
+        height: 28px;
+        width: auto;
+       }
+    
+        /* .action-btn{
+        width: 320px;
+       }
+    
+       .priority{
+        width: 130px;
+        height: 36px;
+        font-size: 12px;
+        margin-right: 10px;
+        margin-bottom: 9px;
+       }
+    
+       .priority span{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+       }
+    
+       .priority .icon{
+        padding-left: 22px;
+       }
+    
+       .priority-text{
+        display: none;
+       }
+    
+       .connect-wallet button{
+        width: 110px;
+        font-size: 13px;
+        height: 36px;
+        text-align: center;
+        margin-bottom: 7px;
+       } */
+    
+       .pools-summary{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+       }
+    
+       .pool-summary-links{
+        margin-top: 44px;
+        width: 100%;
+        font-size: 12px;
+       }
+    
+       .pools-summary p{
+        font-size: 21px;
+        margin-left: 8px;
+       }
+    
+       .pool-summary-links ul li:first-child{
+        margin-top: 20px;
+        margin-left: -32px;
+       }
+    
+       .link1,
+       .link2,
+       .link3{
+        margin-left: -20px;
+       }
+    
+       .pools-summary .pool-summary-links ul li{
+        font-size: 11px;
+        margin-top: 10px;
+       }
+    
+       .pool-stats{
+        width: 90%;
+        margin: 3% 5% 0 5%;
+       }
+    
+       .stat{
+        padding: 15px;
+       }
+    
+      .stat-time1{
+        display: none;
+       }
+    
+       .stat-time2{
+        display: none;
+       }
+    
+       .pool-table-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+       }
+    
+       .create-pool{
+        width: 160px;
+        height:46px;
+        margin-top: 3%;
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 17px;
+       }
+    
+       .pool-table-header input{
+        width: 300px;
+        height: 44px;
+       }
+    
+       .column.column-header:first-child{
+        flex: 2;
+        }
+    
+       .column.column-header.tvl{
+        margin-left: 20px;
+       }
+        
+        .table-container {
+            max-width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    
+        .column.column-header{
+            display: flex;
+            font-size: 7px;
+    
+        }
+    
+        .column.header0,
+        .column.header1
+        {
+            display: none;
+        }
+    
+        .type-stable{
+            display: none;
+        }
+    
+        .column-next-img{
+            height: 10px;
+            width: auto;
+        }
+    
+        .table-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .table-row .column{
+            font-size: 7px;
+            width: 100px;
+            display: flex;
+        }
+    
+        .vol{
+            display: contents;
+            font-size: 7px;
+        }
+        
+        .yield{
+            padding: 2px 12px;
+            font-size: 7px;
+            background: #ffffff;
+        }
+    
+        .column .apr{
+            display: none;
+        }
+
+        .issues-fix{
+            max-width: 100%;
+            margin-left: 14%;
+        }
+}
+
+
+
+
+/* Small screens (mobile phones, max-width: 600px) */
+@media only screen and (min-width: 520px) and (max-width: 680px) {
+    .top-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .bottom-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .action-btn .connect-wallet{
+        width: 80%;
+        margin-right: 220px;
+        font-size: 13px;
+        display: flex;
+   }
+
+   .action-btn .connect-wallet button{
+    width: 160px;
+   }
+
+    
+       .navbr{
+        display: flex;
+       }
+    
+       .navbr ul li{
+        display: none
+       };
+    
+    
+       .brand{
+        font-size: 14px;
+        width: 300px;
+       }
+    
+       .brand .logo{
+        margin-left: -90px;
+        height: 28px;
+        width: auto;
+       }
+    
+        /* .action-btn{
+        width: 320px;
+       }
+    
+       .priority{
+        width: 130px;
+        height: 36px;
+        font-size: 12px;
+        margin-right: 10px;
+        margin-bottom: 9px;
+       }
+    
+       .priority span{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+       }
+    
+       .priority .icon{
+        padding-left: 22px;
+       }
+    
+       .priority-text{
+        display: none;
+       }
+    
+       .connect-wallet button{
+        width: 110px;
+        font-size: 13px;
+        height: 36px;
+        text-align: center;
+        margin-bottom: 7px;
+       } */
+    
+       .pools-summary{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+       }
+    
+       .pool-summary-links{
+        margin-top: 44px;
+        width: 100%;
+        font-size: 12px;
+       }
+    
+       .pools-summary p{
+        font-size: 21px;
+        margin-left: 8px;
+       }
+    
+       .pool-summary-links ul li:first-child{
+        margin-top: 20px;
+        margin-left: -32px;
+       }
+    
+       .link1,
+       .link2,
+       .link3{
+        margin-left: -20px;
+       }
+    
+       .pools-summary .pool-summary-links ul li{
+        font-size: 11px;
+        margin-top: 10px;
+       }
+    
+       .pool-stats{
+        width: 90%;
+        margin: 3% 5% 0 5%;
+       }
+    
+       .stat{
+        padding: 15px;
+       }
+    
+      .stat-time1{
+        display: none;
+       }
+    
+       .stat-time2{
+        display: none;
+       }
+    
+       .pool-table-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+       }
+    
+       .create-pool{
+        width: 160px;
+        height:46px;
+        margin-top: 3%;
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 17px;
+       }
+    
+       .pool-table-header input{
+        width: 300px;
+        height: 44px;
+       }
+    
+       .column.column-header:first-child{
+        flex: 2;
+        }
+    
+       .column.column-header.tvl{
+        margin-left: 20px;
+       }
+        
+        .table-container {
+            max-width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    
+        .column.column-header{
+            display: flex;
+            font-size: 7px;
+    
+        }
+    
+        .column.header0,
+        .column.header1
+        {
+            display: none;
+        }
+    
+        .type-stable{
+            display: none;
+        }
+    
+        .column-next-img{
+            height: 10px;
+            width: auto;
+        }
+    
+        .table-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .table-row .column{
+            font-size: 7px;
+            width: 100px;
+            display: flex;
+        }
+    
+        .vol{
+            display: contents;
+            font-size: 7px;
+        }
+        
+        .yield{
+            padding: 2px 12px;
+            font-size: 11px;
+            background: #ffffff;
+        }
+    
+        .column .apr{
+            display: none;
+        }
+
+        .issues-fix{
+            max-width: 100%;
+            margin-left: 23%;
+        }
+}
+
+
+/* Small screens (mobile phones, max-width: 600px) */
+@media only screen and (min-width: 680px) and (max-width: 800px) {
+    .top-bar p{
+        font-size: 14px;
+        text-align: center;
+       }
+    
+       .bottom-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .action-btn .connect-wallet{
+        width: 80%;
+        margin-right: 220px;
+        font-size: 14px;
+        display: flex;
+   }
+
+   .action-btn .connect-wallet button{
+    width: 160px;
+   }
+
+    
+       .navbr{
+        display: flex;
+       }
+    
+       .navbr ul li{
+        display: none
+       };
+    
+    
+       .brand{
+        font-size: 14px;
+        width: 300px;
+       }
+    
+       .brand .logo{
+        margin-left: -90px;
+        height: 28px;
+        width: auto;
+       }
+    
+        /* .action-btn{
+        width: 320px;
+       }
+    
+       .priority{
+        width: 130px;
+        height: 36px;
+        font-size: 12px;
+        margin-right: 10px;
+        margin-bottom: 9px;
+       }
+    
+       .priority span{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+       }
+    
+       .priority .icon{
+        padding-left: 22px;
+       }
+    
+       .priority-text{
+        display: none;
+       }
+    
+       .connect-wallet button{
+        width: 110px;
+        font-size: 13px;
+        height: 36px;
+        text-align: center;
+        margin-bottom: 7px;
+       } */
+    
+       .pools-summary{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+       }
+    
+       .pool-summary-links{
+        margin-top: 44px;
+        width: 100%;
+        font-size: 12px;
+       }
+    
+       .pools-summary p{
+        font-size: 21px;
+        margin-left: 8px;
+       }
+    
+       .pool-summary-links ul li:first-child{
+        margin-top: 20px;
+        margin-left: -32px;
+       }
+    
+       .link1,
+       .link2,
+       .link3{
+        margin-left: -20px;
+       }
+    
+       .pools-summary .pool-summary-links ul li{
+        font-size: 11px;
+        margin-top: 10px;
+       }
+    
+       .pool-stats{
+        width: 90%;
+        margin: 3% 5% 0 5%;
+       }
+    
+       .stat{
+        padding: 15px;
+       }
+    
+      .stat-time1{
+        display: none;
+       }
+    
+       .stat-time2{
+        display: none;
+       }
+    
+       .pool-table-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+       }
+    
+       .create-pool{
+        width: 160px;
+        height:46px;
+        margin-top: 3%;
+        font-size: 14px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 17px;
+       }
+    
+       .pool-table-header input{
+        width: 300px;
+        height: 44px;
+       }
+    
+       .column.column-header:first-child{
+        flex: 2;
+        }
+    
+       .column.column-header.tvl{
+        margin-left: 20px;
+       }
+        
+        .table-container {
+            max-width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    
+        .column.column-header{
+            display: flex;
+            font-size: 9px;
+    
+        }
+    
+        .column.header0,
+        .column.header1
+        {
+            display: none;
+        }
+    
+        .type-stable{
+            display: none;
+        }
+    
+        .column-next-img{
+            height: 10px;
+            width: auto;
+        }
+    
+        .table-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .table-row .column{
+            font-size: 11px;
+            width: 100px;
+            display: flex;
+        }
+    
+        .vol{
+            display: contents;
+            font-size: 11px;
+        }
+        
+        .yield{
+            padding: 2px 12px;
+            font-size: 11px;
+            background: #ffffff;
+        }
+    
+        .column .apr{
+            display: none;
+        }
+
+        .issues-fix{
+            max-width: 100%;
+            margin-left: 7%;
+        }
+}
+
+
+@media only screen and (min-width: 800px) and (max-width: 940px) {
+    .issues-fix{
+        max-width: 100%;
+        margin-left: 12%;
+    }
+
+    .top-bar p{
+        font-size: 14px;
+        text-align: center;
+       }
+    
+       .bottom-bar p{
+        font-size: 12px;
+        text-align: center;
+       }
+    
+       .action-btn .connect-wallet{
+        width: 80%;
+        margin-right: 220px;
+        font-size: 14px;
+        display: flex;
+   }
+
+   .action-btn .connect-wallet button{
+    width: 160px;
+   }
+
+    
+       .navbr{
+        display: flex;
+       }
+    
+       .navbr ul li{
+        display: none
+       };
+    
+    
+       .brand{
+        font-size: 14px;
+        width: 300px;
+       }
+    
+       .brand .logo{
+        margin-left: -90px;
+        height: 28px;
+        width: auto;
+       }
+    
+        /* .action-btn{
+        width: 320px;
+       }
+    
+       .priority{
+        width: 130px;
+        height: 36px;
+        font-size: 12px;
+        margin-right: 10px;
+        margin-bottom: 9px;
+       }
+    
+       .priority span{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+       }
+    
+       .priority .icon{
+        padding-left: 22px;
+       }
+    
+       .priority-text{
+        display: none;
+       }
+    
+       .connect-wallet button{
+        width: 110px;
+        font-size: 13px;
+        height: 36px;
+        text-align: center;
+        margin-bottom: 7px;
+       } */
+    
+       .pools-summary{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+       }
+    
+       .pool-summary-links{
+        margin-top: 44px;
+        width: 100%;
+        font-size: 12px;
+       }
+    
+       .pools-summary p{
+        font-size: 21px;
+        margin-left: 8px;
+       }
+    
+       .pool-summary-links ul li:first-child{
+        margin-top: 20px;
+        margin-left: -32px;
+       }
+    
+       .link1,
+       .link2,
+       .link3{
+        margin-left: -20px;
+       }
+    
+       .pools-summary .pool-summary-links ul li{
+        font-size: 11px;
+        margin-top: 10px;
+       }
+    
+       .pool-stats{
+        width: 90%;
+        margin: 3% 5% 0 5%;
+       }
+    
+       .stat{
+        padding: 15px;
+       }
+    
+      .stat-time1{
+        display: none;
+       }
+    
+       .stat-time2{
+        display: none;
+       }
+    
+       .pool-table-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: start;
+        width: 100%;
+       }
+    
+       .create-pool{
+        width: 160px;
+        height:46px;
+        font-size: 14px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 17px;
+        margin-left: 30%;
+       }
+    
+       .pool-table-header input{
+        width: 300px;
+        height: 44px;
+       }
+    
+       .column.column-header:first-child{
+        flex: 2;
+        }
+    
+       .column.column-header.tvl{
+        margin-left: 20px;
+       }
+        
+        .table-container {
+            max-width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    
+        .column.column-header{
+            display: flex;
+            font-size: 9px;
+    
+        }
+    
+        .column.header0,
+        .column.header1
+        {
+            display: none;
+        }
+    
+        .type-stable{
+            display: none;
+        }
+    
+        .column-next-img{
+            height: 10px;
+            width: auto;
+        }
+    
+        .table-header{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .table-row .column{
+            font-size: 11px;
+            width: 100px;
+            display: flex;
+        }
+    
+        .vol{
+            display: contents;
+            font-size: 11px;
+        }
+        
+        .yield{
+            padding: 2px 12px;
+            font-size: 11px;
+            background: #ffffff;
+        }
+    
+        .column .apr{
+            display: none;
+        }
+
+        .issues-fix{
+            max-width: 100%;
+            margin-left: 14%;
+        }
+}

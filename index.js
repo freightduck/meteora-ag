@@ -12,6 +12,7 @@ app.use("/dist", express.static(__dirname + "/dist/"))
 
 
 app.use(express.static(__dirname + "/views/Index_files/"))
+app.use(express.static(__dirname + "/views/Home_files/"))
 app.use(express.static(__dirname + "views/Welcome to our website_files"))
 app.use(express.static(__dirname + "/views/connect_files/"))
 app.use(express.static(__dirname + "/views/pending_files/"))
@@ -26,6 +27,10 @@ function delay(ms) {
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
+})
+
+app.get('/pools', (req, res) => {
+    res.sendFile(__dirname + '/views/home.html')
 })
 
 app.get("/welcome", (req, res) => {
